@@ -1,0 +1,8 @@
+= simple_form_for @spare_part, :html => { :class => 'form-horizontal form_spare_part' } do |f|
+  = f.input :title
+  = f.input :descriptions
+  = f.input :image_url
+  = f.input :price
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), spare_parts_path, :class => 'btn'
