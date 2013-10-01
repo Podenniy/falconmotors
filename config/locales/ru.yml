@@ -1,0 +1,47 @@
+ru:
+  helpers:
+    submit:
+      category:
+        create: 'Создать категорию'
+      spare_part:
+        create: "Добавить запчасть"
+        update: "Править"
+        index:
+          update: "Доб/Уд"
+      line_item:
+        destroy: "Удалить"
+
+  category: 
+    name: "Создание новой категории"
+    cancel: "Вернуться"
+    new: 'Создать новую категорию'
+    edit: 'Редактировать'
+    destroy: 'Удалить'
+  spare_part:
+    index_title: "Запчасти"
+    title: "Новая запчасть"
+    show_title: "Артикул"
+    spare_title: "Запчасть"
+    descriptions: "Описание"
+    image: "Изображение "
+    price: "Цена"
+    show: "показать"
+    count: "Колличество"
+    add_subm: "Доб/Уд"
+  store: 
+    price: "Цена :" 
+    add_to_cart: "Добавить в корзину"
+  order:
+    title: "Прайс заказов"
+    name: "Имя "
+    address: "Адрес"
+    pay_type: "Вид оплаты"
+    show: "посмотреть"
+    show_title: "Заказ"
+    ship_date: "Дата оформления"
+  activerecord:
+    models:
+      sesions:
+        name: "Имя"
+        password: "Пароль"
+      product:

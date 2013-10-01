@@ -1,0 +1,5 @@
+.add_quantity_form
+  = simple_form_for spare_part, :html => { :class => 'form-horizontal form_spare_part' } do |f|
+    = f.input :add_quantity, label: false
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'

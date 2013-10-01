@@ -1,21 +1,21 @@
 - model_class = SparePart
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t 'spare_part.spare_title', :default => model_class.model_name.human.titleize
 
 %p
-  %strong= model_class.human_attribute_name(:title) + ':'
+  %strong= model_class.human_attribute_name t('spare_part.show_title') + ':'
   %br
   = @spare_part.title
 %p
-  %strong= model_class.human_attribute_name(:descriptions) + ':'
+  %strong= model_class.human_attribute_name t('spare_part.descriptions') + ':'
   %br
   = @spare_part.descriptions
 %p
-  %strong= model_class.human_attribute_name(:image_url) + ':'
+  %strong= model_class.human_attribute_name t('spare_part.image') + ':'
   %br
-  = @spare_part.image_url
+  =image_tag(@spare_part.image_url)
 %p
-  %strong= model_class.human_attribute_name(:price) + ':'
+  %strong= model_class.human_attribute_name t('spare_part.price') + ':'
   %br
   = @spare_part.price
 

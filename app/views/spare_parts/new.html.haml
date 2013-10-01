@@ -1,4 +1,4 @@
 - model_class = SparePart
 .page-header
-  %h1.title_spare=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
+  %h1.title_spare=t 'spare_part.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
 = render :partial => "form"

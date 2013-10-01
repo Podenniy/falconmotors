@@ -1,0 +1,7 @@
+%ul.nav
+  - @category_menu.each do |category|
+    -if category.name == "Главная"
+      %li= link_to "#{category.name.upcase}", store_path
+    -else
+      %li= link_to "#{category.name.upcase}", category
+  

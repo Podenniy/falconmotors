@@ -1,0 +1,19 @@
+%table.table.table-striped.table-condensed.table-bordered.index_part_table
+  %thead
+    %tr
+    
+      %th=  t('spare_part.show_title')
+      %th= t('spare_part.descriptions')
+      %th= t('spare_part.image')
+      %th= t('spare_part.price')
+      %th=  t('spare_part.count')
+    %tbody
+      - @spare_parts.each do |spare_part|
+        %tr
+        
+          %td= spare_part.title
+          %td= spare_part.descriptions
+          %td= image_tag(spare_part.image.thumb.url)
+          %td= spare_part.price
+          %td#quan= spare_part.quantity
+          

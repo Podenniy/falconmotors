@@ -11,15 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926151059) do
+ActiveRecord::Schema.define(version: 20131001134347) do
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+  end
+
+  create_table "line_items", force: true do |t|
+    t.integer  "spare_part_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",      default: 1
+  end
 
   create_table "spare_parts", force: true do |t|
     t.string   "title"
     t.text     "descriptions"
-    t.string   "image_url"
     t.decimal  "price",        precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "quantity",                             default: 0
+    t.integer  "category_id"
   end
 
   add_index "spare_parts", ["price"], name: "index_spare_parts_on_price", using: :btree

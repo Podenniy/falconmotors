@@ -1,11 +1,23 @@
 Falconmotors::Application.routes.draw do
-  resources :spare_parts
+  resources :categories
+
+  resources :line_items
+
+  resources :carts
+
+  get "store/index"
+  resources :spare_parts do
+    get :quantity_spare, on: :member
+    collection do
+      match 'search' => 'spare_parts#search', via: [:get, :post], as: :search
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'store#index', as: 'store'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
