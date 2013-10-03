@@ -8,15 +8,21 @@
         %th= t('spare_part.image')
         %th= t('spare_part.price')
         %th=  t('spare_part.count')
+        %th
       %tbody
         - @spare_parts.each do |spare_part|
           %tr
-          
             %td= spare_part.title
             %td= spare_part.descriptions
             %td= image_tag(spare_part.image.thumb.url)
-            %td= spare_part.price
+            %td= number_to_currency(spare_part.price, unit: "UA", format: "%n %u")
             %td#quan= spare_part.quantity
-            
+            %td
+              = form_tag line_items_path(spare_part_id: spare_part), :method => :post do
+                = button_tag do
+                  = content_tag :i, "" ,class: 'icon-shopping-cart'    
+                 
+
+              
 
   

@@ -1,40 +1,41 @@
-- model_class = SparePart
-.page-header
-  %h1=t 'spare_part.index_title', :default => model_class.model_name.human.pluralize.titleize
-.index_part.span10
-  %table.table.table-striped.table-condensed.table-bordered.index_part_table
-    %thead
-      %tr
-      
-        %th= model_class.human_attribute_name t('spare_part.show_title')
-        %th= model_class.human_attribute_name t('spare_part.descriptions')
-        %th= model_class.human_attribute_name t('spare_part.image')
-        %th= model_class.human_attribute_name t('spare_part.price')
-        %th= model_class.human_attribute_name t('spare_part.count')
-        %th= model_class.human_attribute_name t('spare_part.count')
-        %th= model_class.human_attribute_name(:created_at)
-        %th=t '.actions', :default => t("helpers.actions")
-    %tbody
-      - @spare_parts.each do |spare_part|
+.right_spare_part
+  - model_class = SparePart
+  .page-header
+    %h1=t 'spare_part.index_title', :default => model_class.model_name.  human.pluralize.titleize
+  .index_part
+    %table.table.table-striped.table-condensed.table-bordered.index_part_table
+      %thead
         %tr
         
-          %td= spare_part.title
-          %td= spare_part.descriptions
-          %td= image_tag(spare_part.image.thumb.url)
-          %td= spare_part.price
-          %td#quan= spare_part.quantity
-          %td
-            #add_quantity_form
-              = simple_form_for spare_part, :html => { :class => 'form-horizontal form_spare_part' } do |f|
-                = f.input :add_quantity , label: false
-              
-                = f.button :submit, t("spare_part.add_subm"), :class => ' btn-mini btn-primary add_subm'
-          %td= spare_part.created_at
-          %td
-            = link_to t('.edit', :default => t("helpers.links.edit")), edit_spare_part_path(spare_part), :class => 'btn btn-mini'
-
-            = link_to t('.show', :default => t("helpers.links.show")), spare_part_path(spare_part), :class => 'btn btn-mini'
-
-            = link_to t('.destroy', :default => t("helpers.links.destroy")), spare_part_path(spare_part), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
-  = link_to t('.new', :default => t("helpers.links.new")), new_spare_part_path, :class => 'btn btn-primary'
+          %th= model_class.human_attribute_name t('spare_part.show_title')
+          %th= model_class.human_attribute_name t('spare_part.descriptions'  )
+          %th= model_class.human_attribute_name t('spare_part.image')
+          %th= model_class.human_attribute_name t('spare_part.price')
+          %th= model_class.human_attribute_name t('spare_part.count')
+          %th= model_class.human_attribute_name t('spare_part.count')
+          %th= model_class.human_attribute_name(:created_at)
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @spare_parts.each do |spare_part|
+          %tr
+          
+            %td= spare_part.title
+            %td= spare_part.descriptions
+            %td= image_tag(spare_part.image.thumb.url)
+            %td= spare_part.price
+            %td#quan= spare_part.quantity
+            %td
+              #add_quantity_form
+                = simple_form_for spare_part, :html => { :class => 'form-  horizontal form_spare_part' } do |f|
+                  = f.input :add_quantity , label: false
+                
+                  = f.button :submit, t("spare_part.add_subm"), :class => '   btn-mini btn-primary add_subm'
+            %td= spare_part.created_at
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")),   edit_spare_part_path(spare_part), :class => 'btn btn-mini'
+  
+              = link_to t('.show', :default => t("helpers.links.show")),   spare_part_path(spare_part), :class => 'btn btn-mini'
+  
+              = link_to t('.destroy', :default => t("helpers.links.destroy"  )), spare_part_path(spare_part), :method => :delete, :data   => { :confirm => t('.confirm', :default => t("helpers.links  .confirm", :default => 'Are you sure?')) }, :class => 'btn   btn-mini btn-danger'
+  
+    = link_to t('.new', :default => t("helpers.links.new")),   new_spare_part_path, :class => 'btn btn-primary'

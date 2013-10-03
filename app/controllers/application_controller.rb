@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       cart = Cart.create
-      session[:cart_id] = cart.cart_id
+      session[:cart_id] = cart.id
       cart
     end
     
@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
       @category_menu = Category.all.where(:parent_id => nil)
     end
     
+
+    def search_parts
+       @search_spares = SparePart.search(params[:q])
+       @spare_parts = @search_spares.result(distinct: true)
+    end
 end

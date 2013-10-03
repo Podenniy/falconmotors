@@ -1,8 +1,6 @@
 class SparePart < ActiveRecord::Base
 	
   has_many :line_items
-  #has_many :children,  :class_name => "SparePart",:foreign_key => "parent_id",:dependent => :destroy
-  #belongs_to :parent, :class_name => "SparePart" 
   before_destroy :ensure_not_referenced_by_any_line_item
 	validates :title, :descriptions,  presence: true
 	validates :price, numericality: {greater_than_or_equal_to: 0.01}
@@ -21,15 +19,15 @@ class SparePart < ActiveRecord::Base
      "".to_i
    end
 
- def add_quantity=(add)
-   
-   if add[1] == '-'
-     self.quantity = quantity - add.to_i 
-   else
-     self.quantity = add.to_i + quantity
-   end
+   def add_quantity=(add = 1)
+     
+     if add[1] == '-'
+       self.quantity = quantity - add.to_i 
+     else
+       self.quantity = add.to_i + quantity
+     end
 
- end
+   end
 
   private
     #убеждаемся в отсутствии товарных позиций
