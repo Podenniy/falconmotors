@@ -29,6 +29,10 @@ class SparePart < ActiveRecord::Base
 
    end
 
+
+   def normal_search
+    title_cont
+   end
   private
     #убеждаемся в отсутствии товарных позиций
     def ensure_not_referenced_by_any_line_item

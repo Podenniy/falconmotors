@@ -1,0 +1,27 @@
+
+-if @cart.line_items.empty?
+  =render "empty_cart"
+- else
+  #cart_id
+    -if notice
+      #notise_id
+        = bootstrap_flash
+    %h1 Ваша карта
+    %table#cart_tabletable.table-condensed.table-bordered.index_part_table.cart_table
+      %thead
+        %tr.cart_table_title
+          %th=  t('spare_part.show_title')
+          %th= t('spare_part.descriptions')
+          %th= t('spare_part.price')
+          %th Наличие
+          %th=  t('spare_part.count')
+          %th
+
+      %tbody
+        = render(cart.line_items)
+        %tr.total_line 
+          %td.total_title{colspan: "4"} Общяя сумма:
+          %td.total_cell
+            = number_to_currency(cart.total_price, unit: "UA",   format:"%n %u")
+    = button_to 'Удалить корзину', cart, method: :delete, confirm:   'Вы уверены ?'
+  

@@ -5,6 +5,7 @@ class CartsController < InheritedResources::Base
   respond_to :html, :json
 
   def show
+    
     begin
       @cart = Cart.find(params[:id])
     rescue ActiveRecord::RecordNotFound
@@ -21,9 +22,8 @@ class CartsController < InheritedResources::Base
   def destroy
     @cart.destroy
     session[:cart_id] = nil
-    destroy! do |format|
-      format.html { render "empty_cart", :notice => "Ваша корзина пуста"}
-    end
+    destroy!{ store_url }
+    
   end
 
   private

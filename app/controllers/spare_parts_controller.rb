@@ -1,7 +1,7 @@
 class SparePartsController < InheritedResources::Base
 
   before_action :menu
-
+  before_action :cart
   before_action :search_parts
 
   def update
@@ -20,8 +20,8 @@ class SparePartsController < InheritedResources::Base
     end
   end
   def search
-    
-    render "search_table"
+    SparePart
+    render 'show'
   end
   
   private
@@ -36,6 +36,11 @@ class SparePartsController < InheritedResources::Base
     def search_parts
       @search_spares = SparePart.search(params[:q])
       @spare_parts = @search_spares.result(distinct: true)
+
+    end
+
+    def cart
+      @cart = current_cart
     end
 
     def menu

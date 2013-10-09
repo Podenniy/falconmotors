@@ -1,0 +1,23 @@
+          
+%tr.cont
+  %td= line_item.spare_part.title
+  %td= line_item.spare_part.descriptions
+              
+  %td= number_to_currency(line_item.total_price, unit: "UA",   format:"%n %u")
+  %td= line_item.spare_part.quantity
+  %td#quan_cart
+    = simple_form_for line_item , remote: true, :html => { :class => 'form-    horizontal ' } do |f|
+      = f.input :quantity , label: false 
+      - if line_item.quantity == line_item.spare_part.quantity
+        .hand
+          %i.icon-hand-right
+          %span.label.label-important
+            = line_item.quantity
+            %br
+            max
+          %i.icon-hand-left
+     
+      =f.button :submit, "добавить", class: "btn btn-mini"
+      %i.clearfix
+  %td
+    = link_to 'уд/поз', line_item, :method => :delete, data: { :confirm => 'Are you sure?' }, class: "btn btn-mini"
