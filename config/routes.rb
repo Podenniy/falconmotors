@@ -1,4 +1,10 @@
 Falconmotors::Application.routes.draw do
+  resources :orders
+
+  resources :suppliers
+
+  resources :brends
+
   resources :categories
 
   resources :line_items

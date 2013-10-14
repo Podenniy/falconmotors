@@ -1,0 +1,21 @@
+%h1 Listing brends
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+  - @brends.each do |brend|
+    %tr
+      %td= brend.title
+      %td= brend.description
+      %td= link_to 'Show', brend
+      %td= link_to 'Edit', edit_brend_path(brend)
+      %td= link_to 'Destroy', brend, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Brend', new_brend_path

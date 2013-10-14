@@ -1,29 +1,33 @@
 
-#cart
-  %table.table.table-striped.table-condensed.table-bordered.index_part_table
-    %thead
-      %tr
+#part
+  - model_class = SparePart
+.page-header
+  %h1 
+    =@spare_part.title
+   
+%p
+  %strong= model_class.human_attribute_name t('spare_part.descriptions') + ':'
+  %br
+  = @spare_part.descriptions
+%p
+  %strong= model_class.human_attribute_name t('spare_part.image') + ':'
+  %br
+  = image_tag( @spare_part.image.thumb.url)
+%p
+  %strong= model_class.human_attribute_name t('spare_part.price') + ':'
+  %br
+  =  number_to_currency(@spare_part.price, unit: "UA", format: "%n %u")
+%p
+  %strong= model_class.human_attribute_name t('spare_part.brend')
+  %br
+  = image_tag( @spare_part.brend.image)
+  = @spare_part.brend.title
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), spare_parts_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_spare_part_path(@spare_part), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), spare_part_path(@spare_part), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  
     
-        %th=  t('spare_part.show_title')
-        %th= t('spare_part.descriptions')
-        %th= t('spare_part.image')
-        %th= t('spare_part.price')
-        %th=  t('spare_part.count')
-        %th
-      %tbody
-        - @spare_parts.each do |spare_part|
-          %tr
-            %td= spare_part.title
-            %td= spare_part.descriptions
-            %td= image_tag(spare_part.image.thumb.url)
-            %td= number_to_currency(spare_part.price, unit: "UA", format: "%n %u")
-            %td#quan= spare_part.quantity
-            %td
-              = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
-                = button_tag do
-                  = content_tag :i, "" ,class: 'icon-shopping-cart'    
-                 
-
               
 
   

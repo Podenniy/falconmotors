@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007092429) do
+ActiveRecord::Schema.define(version: 20131014132434) do
+
+  create_table "brends", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
+
+  add_index "brends", ["title"], name: "index_brends_on_title", using: :btree
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -32,6 +42,17 @@ ActiveRecord::Schema.define(version: 20131007092429) do
     t.datetime "updated_at"
     t.integer  "quantity",                               default: 1
     t.decimal  "price",         precision: 10, scale: 0
+    t.integer  "order_id"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "pay_type"
+    t.string   "delivery_method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "spare_parts", force: true do |t|
@@ -43,9 +64,21 @@ ActiveRecord::Schema.define(version: 20131007092429) do
     t.string   "image"
     t.integer  "quantity",                             default: 0
     t.integer  "category_id"
+    t.integer  "brend_id"
+    t.integer  "parent_id"
   end
 
   add_index "spare_parts", ["price"], name: "index_spare_parts_on_price", using: :btree
   add_index "spare_parts", ["title"], name: "index_spare_parts_on_title", using: :btree
+
+  create_table "suppliers", force: true do |t|
+    t.decimal  "price",         precision: 8, scale: 2
+    t.integer  "quantity"
+    t.integer  "delivery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "spare_part_id"
+  end
 
 end

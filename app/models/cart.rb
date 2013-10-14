@@ -19,5 +19,7 @@ class Cart < ActiveRecord::Base
    end
      current_item
   end
-
+  def not_add_line_item
+    current_item = line_items.find_by_spare_part_id(spare_part_id)
+  end
 end

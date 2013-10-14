@@ -1,0 +1,13 @@
+= simple_form_for @brend, :html => { :multipart => true ,:class => 'form-horizontal form_spare_part' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :description
+    
+    = image_tag(@brend.image_url) if @brend.image?
+    = f.input :image
+    = f.hidden_field :image_cache
+
+  .form-actions
+    = f.button :submit

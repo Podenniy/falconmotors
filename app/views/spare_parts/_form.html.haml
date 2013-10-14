@@ -1,8 +1,9 @@
 = simple_form_for @spare_part, :html => { :multipart => true ,:class => 'form-horizontal form_spare_part' } do |f|
   = f.input :title
   = f.input :descriptions
-  
-  = image_tag(@spare_part.image_url) if @spare_part.image?
+  = f.association :brend
+  = f.association :parent
+  = image_tag(@spare_part.image) if @spare_part.image?
   = f.input :image
   = f.hidden_field :image_cache
   = f.input :quantity

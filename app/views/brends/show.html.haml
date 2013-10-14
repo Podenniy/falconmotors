@@ -1,0 +1,13 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @brend.title
+%p
+  %b Description:
+  = @brend.description
+%p
+  = image_tag(@brend.image)
+= link_to 'Edit', edit_brend_path(@brend)
+\|
+= link_to 'Back', brends_path

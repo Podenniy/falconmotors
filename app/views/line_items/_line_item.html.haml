@@ -20,4 +20,4 @@
       =f.button :submit, "добавить", class: "btn btn-mini"
       %i.clearfix
   %td
-    = link_to 'уд/поз', line_item, :method => :delete, data: { :confirm => 'Are you sure?' }, class: "btn btn-mini"
+    = link_to 'уд/поз', line_item, :method => :delete, remote: true, class: "btn btn-mini"

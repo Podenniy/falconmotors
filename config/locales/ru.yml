@@ -20,14 +20,15 @@ ru:
   spare_part:
     index_title: "Запчасти"
     title: "Новая запчасть"
-    show_title: "Артикул"
+    show_title: "Фирма"
     spare_title: "Запчасть"
     descriptions: "Описание"
-    image: "Изображение "
+    image: "Инф. "
     price: "Цена"
     show: "показать"
-    count: "Колличество"
+    count: "Нал."
     add_subm: "Доб/Уд"
+    brend: "Бренд"
   store: 
     price: "Цена :" 
     add_to_cart: "Добавить в корзину"

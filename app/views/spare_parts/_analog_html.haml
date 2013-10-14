@@ -1,0 +1,42 @@
+#cart
+  %table.table.table-striped.table-condensed.table-bordered.index_part_table
+    %thead.accordion#accordion2
+      %tr
+      
+        %th=  t('spare_part.show_title')
+        %th= t('spare_part.descriptions')
+        %th= t('spare_part.image')
+        %th= t('spare_part.price')
+        %th=  t('spare_part.count')
+        %th
+      %tbody
+        - @spare_parts.each do |spare_part|
+          -if spare_part.parent == nil
+            .accordion#accordion2
+              .accordion-group
+                .accordion-heading
+                  %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
+                    = выбранный Артикул
+                #collapseOne.accordion-body.collapse.in
+                  .accordion-inner
+                    %tr
+                      %td
+                        = image_tag(spare_part.brend.image)
+                        = spare_part.brend.title
+                        = spare_part.title
+              
+                      %td= spare_part.descriptions
+                      %td= image_tag(spare_part.image.thumb.url)
+                      %td= number_to_currency(spare_part.price, unit: "UA", format: "%n %u")
+                      %td#quan= spare_part.quantity
+                      %td
+                        = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
+                          = button_tag do
+                            = content_tag :i, "" ,class: 'icon-shopping-cart'    
+
+          -else
+                 
+
+              
+
+  

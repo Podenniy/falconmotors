@@ -21,16 +21,16 @@ class SparePartsController < InheritedResources::Base
   end
   def search
     SparePart
-    render 'show'
+    render 'search_table'
   end
   
   private
     def permitted_params
-        params.permit(:spare_part => [:title, :descriptions, :image, :image_cache, :quantity, :price,:photos, :add_quantity] )
+        params.permit(:spare_part => [:title, :descriptions, :image, :image_cache, :quantity, :price,:photos, :add_quantity, :brend_id, :parent,  :parent_id] )
     end
 
     def part_params
-      params.require(:spare_part).permit(:title, :descriptions, :image, :image_cache, :quantity, :price,:photos, :add_quantity)
+      params.require(:spare_part).permit(:title, :descriptions, :image, :image_cache, :quantity, :price,:photos, :add_quantity, :brend_id, :parent,  :parent_id)
     end
 
     def search_parts
