@@ -52,6 +52,9 @@
                                 = price.delivery 
                                 дн
                               %td
+                                = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                                  = button_tag do
+                                    = content_tag :i, "" ,class: 'icon-shopping-cart'
       %tr                     
         %td{colspan: "7"} 
           .accordion-group
@@ -73,7 +76,7 @@
                           %td.part_view_desc= anlog_part.descriptions
                           %td.part_view_img= image_tag(anlog_part.image.thumb.url)
                           %td#quan.part_view_quan= anlog_part.quantity
-                          %td.part_view_price= number_to_currency(anlog_part.price, unit: "грн", format: "%n %u")
+                          %td.part_view_price
                           %td.part_view_cart
                             = form_tag line_items_path(spare_part_id: anlog_part), :method => :post, remote: true do
                               = button_tag do

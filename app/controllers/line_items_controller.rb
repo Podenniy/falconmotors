@@ -7,10 +7,10 @@ class LineItemsController < InheritedResources::Base
    respond_to :json, :only => [:create, :update, :destroy]
    
    def create
-     spare_part = SparePart.find(params[:spare_part_id])
+     price = PricePart.find(params[:price_id])
      
-     unless @cart.line_items.find_by_spare_part_id(spare_part) 
-      @line_item = @cart.add_spare_part( spare_part.id)
+     unless @cart.line_items.find_by_price_part_id(price) 
+      @line_item = @cart.add_price_part( price.id)
       create!(notice: " Позиция была успешно создана ") { @line_item.cart }
      else
        logger.error "Попытка добавить дублирующий товар #{params[:id]}"
@@ -33,10 +33,11 @@ class LineItemsController < InheritedResources::Base
 
    def update
       @line_item = LineItem.find(params[:id])
-      @quantity_l =  @line_item.spare_part.quantity
+      @quantity_l =  @line_item.price_part.quantity
       if @line_item.update(line_params)
-        unless @line_item.quantity > @quantity_l
-          update!(notice: "Вы добавили в корзину #{@line_item.quantity}, #{@line_item.spare_part.title} ") { @cart }
+        unless @line_item.quantity   >  @quantity_l
+
+          update!(notice: "у вас в корзине #{@line_item.quantity} шт, #{@line_item.price_part.spare_part.brend.title} #{@line_item.price_part.spare_part.title}") { @cart }
          else
 
           logger.error "Попытка добавить больше товара #{params[:id]}"
@@ -45,7 +46,7 @@ class LineItemsController < InheritedResources::Base
           @line_item.update_attributes(quantity: @quantity_l )
           
         end
-        @current_item = @line_item
+       
       end
    end
    
@@ -103,11 +104,11 @@ class LineItemsController < InheritedResources::Base
 
   private
     def permitted_params
-      params.permit(:line_item =>[:spare_part_id, :cart_id, :quantity])
+      params.permit(:line_item =>[:spare_part_id, :cart_id, :quantity, :price, :price_part_id])
     end
 
     def line_params
-      params.require(:line_item).permit(:spare_part_id, :cart_id, :quantity)
+      params.require(:line_item).permit(:spare_part_id, :cart_id, :quantity, :price, :price_part_id)
     end
 
     def menu

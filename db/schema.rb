@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017220216) do
+ActiveRecord::Schema.define(version: 20131018110900) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20131017220216) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity",                               default: 1
-    t.decimal  "price",         precision: 10, scale: 0
     t.integer  "order_id"
+    t.integer  "price_part_id"
+    t.decimal  "price",         precision: 10, scale: 0
   end
 
   create_table "orders", force: true do |t|
@@ -70,17 +71,15 @@ ActiveRecord::Schema.define(version: 20131017220216) do
   create_table "spare_parts", force: true do |t|
     t.string   "title"
     t.text     "descriptions"
-    t.decimal  "price",        precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
-    t.integer  "quantity",                             default: 0
+    t.integer  "quantity",     default: 0
     t.integer  "category_id"
     t.integer  "brend_id"
     t.integer  "parent_id"
   end
 
-  add_index "spare_parts", ["price"], name: "index_spare_parts_on_price", using: :btree
   add_index "spare_parts", ["title"], name: "index_spare_parts_on_title", using: :btree
 
   create_table "suppliers", force: true do |t|

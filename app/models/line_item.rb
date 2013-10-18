@@ -2,6 +2,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :spare_part
   belongs_to :cart
+  belongs_to :price_part
   #validates :quantity, numericality: {:greater_than_or_equal_to => 1, on: :update}
   before_save :quantity_not_valid  
  
