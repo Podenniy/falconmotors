@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014132434) do
+ActiveRecord::Schema.define(version: 20131017220216) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20131014132434) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.integer  "supplier_id"
+    t.integer  "spare_part_id"
   end
 
   add_index "brends", ["title"], name: "index_brends_on_title", using: :btree
@@ -55,6 +57,16 @@ ActiveRecord::Schema.define(version: 20131014132434) do
     t.datetime "updated_at"
   end
 
+  create_table "price_parts", force: true do |t|
+    t.decimal  "price",         precision: 8, scale: 2
+    t.integer  "delivery"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "supplier_id"
+    t.integer  "spare_part_id"
+  end
+
   create_table "spare_parts", force: true do |t|
     t.string   "title"
     t.text     "descriptions"
@@ -72,13 +84,9 @@ ActiveRecord::Schema.define(version: 20131014132434) do
   add_index "spare_parts", ["title"], name: "index_spare_parts_on_title", using: :btree
 
   create_table "suppliers", force: true do |t|
-    t.decimal  "price",         precision: 8, scale: 2
-    t.integer  "quantity"
-    t.integer  "delivery"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "spare_part_id"
   end
 
 end

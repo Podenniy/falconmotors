@@ -3,9 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :price
-    = f.input :quantity
-    = f.input :delivery
-    = f.association :spare_parts
+    = f.simple_fields_for spare_parts do |part_form|
+      
   .form-actions
     = f.button :submit

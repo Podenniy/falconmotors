@@ -104,6 +104,7 @@ GEM
     multi_json (1.8.0)
     mysql2 (0.3.13)
     orm_adapter (0.4.0)
+    pg (0.17.0)
     polyamorous (0.6.3)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -209,6 +210,7 @@ DEPENDENCIES
   less-rails
   mini_magick (~> 3.6.0)
   mysql2
+  pg (~> 0.17.0)
   rails (= 4.0.0)
   ransack (~> 1.0.0)
   rspec-rails (~> 2.14.0)

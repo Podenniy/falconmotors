@@ -29,6 +29,7 @@ ru:
     count: "Нал."
     add_subm: "Доб/Уд"
     brend: "Бренд"
+    supplier: "Поставщики"
   store: 
     price: "Цена :" 
     add_to_cart: "Добавить в корзину"

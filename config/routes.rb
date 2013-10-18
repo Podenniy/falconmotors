@@ -1,7 +1,9 @@
 Falconmotors::Application.routes.draw do
-  resources :orders
+  resources :price_parts
 
   resources :suppliers
+
+  resources :orders
 
   resources :brends
 
@@ -15,10 +17,16 @@ Falconmotors::Application.routes.draw do
   resources :spare_parts do
     get :quantity_spare, on: :member
     collection do
+      
       match 'search' => 'spare_parts#search', via: [:get, :post], as: :search
     end
   end
-
+  resources :suppliers do
+    collection do
+      match 'search_supplier' => 'suppliers#search__supplier',  via: [:get, :post], as: :search_supplear
+      
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

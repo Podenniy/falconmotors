@@ -2,7 +2,7 @@ class OrdersController < InheritedResources::Base
   before_action :menu
   before_action :cart
   before_action :search_parts
-  respond_to :html, :json :only => [:new]
+  respond_to :html, :json, :only => [:new]
 
   def new
   	if@cart.line_items.empty?
@@ -12,7 +12,7 @@ class OrdersController < InheritedResources::Base
   	@order = Order.new
     new!
   end
-  
+
   private
     def permitted_params
         params.permit(:supplier => [:name, :address, :email, :pay_type, :spare_part_id] )

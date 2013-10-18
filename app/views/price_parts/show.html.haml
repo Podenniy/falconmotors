@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %b Запчасть:
+  = @price_part.spare_part.brend.title
+  = @price_part.spare_part.title
+%p
+  %b Поставщик:
+  = @price_part.supplier.name
+
+%p
+  %b Price:
+  = @price_part.price
+%p
+  %b Delivery:
+  = @price_part.delivery
+%p
+  %b Quantity:
+  = @price_part.quantity
+%p
+= link_to 'Edit', edit_price_part_path(@price_part)
+\|
+= link_to 'Back', price_parts_path

@@ -1,0 +1,23 @@
+%h1 Listing price_parts
+
+%table
+  %tr
+    %th Price
+    %th Delivery
+    %th Quantity
+    %th
+    %th
+    %th
+
+  - @price_parts.each do |price_part|
+    %tr
+      %td= price_part.price
+      %td= price_part.delivery
+      %td= price_part.quantity
+      %td= link_to 'Show', price_part
+      %td= link_to 'Edit', edit_price_part_path(price_part)
+      %td= link_to 'Destroy', price_part, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Price part', new_price_part_path

@@ -1,0 +1,11 @@
+= simple_form_for(@price_part) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :price
+    = f.input :delivery
+    = f.input :quantity
+    = f.association :supplier
+    = f.association :spare_part
+  .form-actions
+    = f.button :submit

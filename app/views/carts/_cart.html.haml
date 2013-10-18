@@ -27,7 +27,7 @@
     .cart_form 
       - unless current_page?(new_order_path)
         = button_to 'Оформить заказ', new_order_path, method: :get, class: "btn btn-success"
-        = button_to 'Удалить корзину', cart, method: :delete, remote: true, data: {confirm: 'Точно удалить?'},class: "btn btn-smal btn-danger "
+        = button_to 'Удалить корзину', cart, method: :delete,  data: {confirm: 'Точно удалить?'},class: "btn btn-smal btn-danger "
       - else
         = button_to 'Отменить заказ', store_path, method: :get , :class => 'btn btn-inverse reset'
   

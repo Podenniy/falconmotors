@@ -4,7 +4,8 @@
   .form-inputs
     = f.input :title
     = f.input :description
-    
+    = f.association :supplier
+    = f.association :spare_part
     = image_tag(@brend.image_url) if @brend.image?
     = f.input :image
     = f.hidden_field :image_cache

@@ -20,8 +20,9 @@
 %p
   %strong= model_class.human_attribute_name t('spare_part.brend')
   %br
-  = image_tag( @spare_part.brend.image)
-  = @spare_part.brend.title
+    
+    = image_tag( @spare_part.brend.image)
+    = @spare_part.brend.title
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), spare_parts_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_spare_part_path(@spare_part), :class => 'btn'

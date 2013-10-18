@@ -1,6 +1,6 @@
 .accordion#accordion2.search_table1
   %table.table.table-condensed.table-bordered
-    %thead
+    %thead#title
       %tr
         %th.spare_title
           =  t('spare_part.show_title')
@@ -12,11 +12,14 @@
           =  t('spare_part.count')
         %th.spare_price_title
           = t('spare_part.price')
+        %th.spare_delivery_title
+          %small 
+            колл дней доставки
         %th.spare_cart_title
           
     %tbody
       %tr
-        %td{colspan: "6"} 
+        %td{colspan: "7"} 
           .accordion-group
             .accordion-heading
               %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
@@ -25,6 +28,7 @@
               .accordion-inner.tab
                 %table.table.table-condensed.search_table2
                   - @spare_parts.each do |spare_part|
+
                     %tr
                       %td.part_view
                         = image_tag(spare_part.brend.image)
@@ -34,15 +38,22 @@
                         = spare_part.descriptions
                       %td.part_view_img
                         = image_tag(spare_part.image.thumb.url)
-                      %td#quan.part_view_quan= spare_part.quantity
-                      %td.part_view_price
-                        = number_to_currency(spare_part.price, unit: "грн", format: "%n %u")
-                      %td.part_view_cart
-                        = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
-                          = button_tag do
-                            = content_tag :i, "" ,class: 'icon-shopping-cart'
-      %tr
-        %td{colspan: "6"} 
+                      %td#supplier_id{colspan: "4"}
+                        %table.table
+                          -spare_part.price_parts.each do |price|
+                            %tr
+                              %td
+                                = price.quantity 
+                                шт
+                              %td
+                                = number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                 
+                              %td
+                                = price.delivery 
+                                дн
+                              %td
+      %tr                     
+        %td{colspan: "7"} 
           .accordion-group
             .accordion-heading
               %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseTwo"}

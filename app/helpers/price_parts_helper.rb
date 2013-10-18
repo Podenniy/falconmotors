@@ -1,0 +1,2 @@
+module PricePartsHelper
+end

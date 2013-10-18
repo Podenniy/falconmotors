@@ -1,42 +1,70 @@
-#cart
-  %table.table.table-striped.table-condensed.table-bordered.index_part_table
-    %thead.accordion#accordion2
+.accordion#accordion2.search_table1
+  %table.table.table-condensed.table-bordered
+    %thead
       %tr
-      
-        %th=  t('spare_part.show_title')
-        %th= t('spare_part.descriptions')
-        %th= t('spare_part.image')
-        %th= t('spare_part.price')
-        %th=  t('spare_part.count')
-        %th
-      %tbody
-        - @spare_parts.each do |spare_part|
-          -if spare_part.parent == nil
-            .accordion#accordion2
-              .accordion-group
-                .accordion-heading
-                  %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
-                    = выбранный Артикул
-                #collapseOne.accordion-body.collapse.in
-                  .accordion-inner
+        %th.spare_title
+          =  t('spare_part.show_title')
+        %th.spare_desc_title
+          = t('spare_part.descriptions')
+        %th.spare_img_title
+          = t('spare_part.image')
+        %th.spare_qan_title
+          =  t('spare_part.count')
+        %th.spare_price_title
+          = t('spare_part.price')
+        %th.spare_cart_title
+          
+    %tbody
+      %tr
+        %td{colspan: "6"} 
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
+                Выбранный Артикул
+            #collapseOne.accordion-body.collapse.in
+              .accordion-inner.tab
+                %table.table.table-condensed.search_table2
+                  - @spare_parts.each do |spare_part|
+
                     %tr
-                      %td
+                      %td.part_view
                         = image_tag(spare_part.brend.image)
                         = spare_part.brend.title
                         = spare_part.title
-              
-                      %td= spare_part.descriptions
-                      %td= image_tag(spare_part.image.thumb.url)
-                      %td= number_to_currency(spare_part.price, unit: "UA", format: "%n %u")
-                      %td#quan= spare_part.quantity
-                      %td
+                      %td.part_view_desc
+                        = spare_part.descriptions
+                      %td.part_view_img
+                        = image_tag(spare_part.image.thumb.url)
+                      %td#quan.part_view_quan= spare_part.quantity
+                      %td.part_view_price
+                        = number_to_currency(spare_part.price, unit: "грн", format: "%n %u")
+                      %td.part_view_cart
                         = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
                           = button_tag do
-                            = content_tag :i, "" ,class: 'icon-shopping-cart'    
+                            = content_tag :i, "" ,class: 'icon-shopping-cart'
+      %tr
+        %td{colspan: "6"} 
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseTwo"}
+                Аналог
+            #collapseTwo.accordion-body.collapse.in
+              .accordion-inner.tab 
+                %table.table         
+                  - @spare_parts.each do |spare_part|
+                    -spare_part.children.each do |anlog_part|
+                      - if spare_part.parent_id != nil
+                        %tr
+                          %td.part_view
 
-          -else
-                 
-
-              
-
-  
+                            /= image_tag(anlog_part.brend.image)
+                            /= anlog_part.brend.title
+                            /= anlog_part.title
+                          %td.part_view_desc= anlog_part.descriptions
+                          %td.part_view_img= image_tag(anlog_part.image.thumb.url)
+                          %td#quan.part_view_quan= anlog_part.quantity
+                          %td.part_view_price= number_to_currency(anlog_part.price, unit: "грн", format: "%n %u")
+                          %td.part_view_cart
+                            = form_tag line_items_path(spare_part_id: anlog_part), :method => :post, remote: true do
+                              = button_tag do
+                                = content_tag :i, "" ,class: 'icon-shopping-cart'

@@ -25,4 +25,5 @@ class ApplicationController < ActionController::Base
        @search_spares = SparePart.search(params[:q])
        @spare_parts = @search_spares.result(distinct: true)
     end
+    
 end

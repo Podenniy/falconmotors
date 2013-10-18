@@ -53,6 +53,10 @@ group  :development, :test do
   gem 'factory_girl', "~> 4.2.0"
 
 end
+
+group :production do
+  gem 'pg', "~> 0.17.0"
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

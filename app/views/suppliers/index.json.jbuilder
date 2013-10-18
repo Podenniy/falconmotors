@@ -1,4 +1,4 @@
 json.array!(@suppliers) do |supplier|
-  json.extract! supplier, :price, :quantity, :delivery
+  json.extract! supplier, :name
   json.url supplier_url(supplier, format: :json)
 end

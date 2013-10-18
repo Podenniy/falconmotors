@@ -2,18 +2,14 @@
 
 %table
   %tr
-    %th Price
-    %th Quantity
-    %th Delivery
+    %th Name
     %th
     %th
     %th
 
   - @suppliers.each do |supplier|
     %tr
-      %td= supplier.price
-      %td= supplier.quantity
-      %td= supplier.delivery
+      %td= supplier.name
       %td= link_to 'Show', supplier
       %td= link_to 'Edit', edit_supplier_path(supplier)
       %td= link_to 'Destroy', supplier, :method => :delete, :data => { :confirm => 'Are you sure?' }
