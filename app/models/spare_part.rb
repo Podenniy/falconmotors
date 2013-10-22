@@ -2,7 +2,7 @@ class SparePart < ActiveRecord::Base
   
   has_many :price_parts
   belongs_to :brend
-  
+  has_many :orders, through: :line_items
   has_many :line_items
   belongs_to :parent, :class_name => "SparePart" 
   has_many :children,  :class_name => "SparePart",:foreign_key => "parent_id",:dependent => :destroy
@@ -34,7 +34,7 @@ class SparePart < ActiveRecord::Base
 
    end
 
-
+  
    
   private
     #убеждаемся в отсутствии товарных позиций

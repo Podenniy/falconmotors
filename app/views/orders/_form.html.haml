@@ -1,12 +1,14 @@
-= simple_form_for(@order) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.input :address
-    = f.input :email
-    = f.input :pay_type
-    = f.input :delivery_method
-
-  .form-actions
-    = f.button :submit
+#order_form 
+  = simple_form_for(@order) do |f|
+    = f.error_notification
+  
+    .form-inputs
+      = f.input :name
+      = f.input :address
+      = f.input :email
+      = f.association  :pyment_type, as: :radio_buttons
+      = f.association :delivery_method, as: :radio_buttons
+  
+    .form-actions
+      = f.button :submit
+  = button_to 'Отменить заказ', @cart, method: :get , :class => 'btn btn-inverse ',remote: true

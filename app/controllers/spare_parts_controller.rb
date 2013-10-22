@@ -25,6 +25,13 @@ class SparePartsController < InheritedResources::Base
     render 'search_table'
   end
   
+  def who_bought
+    @spare_part = SparePart.find(params[:id])
+    respond_to do |format|
+      format.atom
+    end
+  end
+
   private
     def permitted_params
         params.permit(:spare_part => [:title, :descriptions, :image, :image_cache, :quantity, :price,:photos, :add_quantity, :brend_id, :parent,  :parent_id, :supplier_id] )

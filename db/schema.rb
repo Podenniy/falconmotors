@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018110900) do
+ActiveRecord::Schema.define(version: 20131022174339) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20131018110900) do
 
   add_index "brends", ["title"], name: "index_brends_on_title", using: :btree
 
+  create_table "brends_suppliers", force: true do |t|
+    t.integer "brend_id"
+    t.integer "supplier_id"
+  end
+
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,6 +40,12 @@ ActiveRecord::Schema.define(version: 20131018110900) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+  end
+
+  create_table "delivery_methods", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "line_items", force: true do |t|
@@ -56,6 +67,8 @@ ActiveRecord::Schema.define(version: 20131018110900) do
     t.string   "delivery_method"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pyment_type_id"
+    t.integer  "delivery_method_id"
   end
 
   create_table "price_parts", force: true do |t|
@@ -66,6 +79,13 @@ ActiveRecord::Schema.define(version: 20131018110900) do
     t.datetime "updated_at"
     t.integer  "supplier_id"
     t.integer  "spare_part_id"
+  end
+
+  create_table "pyment_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "spare_parts", force: true do |t|

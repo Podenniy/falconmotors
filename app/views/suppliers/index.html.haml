@@ -1,19 +1,31 @@
-%h1 Listing suppliers
+#supplier_list
+  -@suppliers.each_with_index do |supp, index|
+    #supplier_id
+      .accordion#accordion2
+        %table.table.table-condensed.table-bordered
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @suppliers.each do |supplier|
-    %tr
-      %td= supplier.name
-      %td= link_to 'Show', supplier
-      %td= link_to 'Edit', edit_supplier_path(supplier)
-      %td= link_to 'Destroy', supplier, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Supplier', new_supplier_path
+          %tr
+            %th.supplier_title
+              .accordion-group
+                .accordion-heading
+                  %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapse#{index.to_s}"}
+                    Поставщик:
+                    =supp.name
+                .accordion-body.collapse.in{id: "collapse #{index.to_s}"}
+                  .accordion-inner.tab
+                    -supp.brends.each do |brend|
+                      %table.table.table-condensed   
+                        %tr
+                          %td
+                      
+                            Бренд:
+                            =brend.title
+                            - supp.price_parts.each do |price|
+                              -if price.spare_part.brend.title == brend.title
+                                %table.table.table-condensed
+                                  %tr
+                                    %td
+                                      = price.spare_part.title
+                                    %td
+                                      = price.quantity 
+  = link_to 'New Supplier', new_supplier_path

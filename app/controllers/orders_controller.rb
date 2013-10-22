@@ -2,7 +2,12 @@ class OrdersController < InheritedResources::Base
   before_action :menu
   before_action :cart
   before_action :search_parts
-  respond_to :html, :json, :only => [:new]
+  respond_to :html, :json, :only => [:new, :index, :show, :edit, :destroy, :update]
+
+  def index
+    @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
+    index!
+  end
 
   def new
   	if@cart.line_items.empty?
@@ -12,14 +17,31 @@ class OrdersController < InheritedResources::Base
   	@order = Order.new
     new!
   end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.add_line_items_from_cart(current_cart)
+    create! do |format|
+      if@order.save
+        Cart.destroy(session[:cart_id])
+        session[:cart_id]= nil
+        format.html {redirect_to store_url, notice: 'Спасибо за ваш заказ'}
+        format.json {render json: @order, status: :created, location: @order}
+       else
+        @cart = current_cart
+        format.html {render action: "new"}
+        format.json {render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
     def permitted_params
-        params.permit(:supplier => [:name, :address, :email, :pay_type, :spare_part_id] )
+        params.permit(:order => [:name, :address, :email, :pay_type, :spare_part_id, :delivery_method_id, :pyment_type_id] )
     end
 
-    def supplier_params
-      params.require(:supplier).permit(:name, :delivery, :price,:quantity, :spare_part_id)
+    def order_params
+      params.require(:order).permit(:name, :address, :email, :pay_type, :spare_part_id, :delivery_method_id, :pyment_type_id)
     end
 
     def search_parts

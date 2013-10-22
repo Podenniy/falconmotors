@@ -66,18 +66,27 @@
                 %table.table         
                   - @spare_parts.each do |spare_part|
                     -spare_part.children.each do |anlog_part|
-                      - if spare_part.parent_id != nil
-                        %tr
-                          %td.part_view
+                      %tr
+                        %td.part_view
 
-                            = image_tag(anlog_part.brend.image)
-                            = anlog_part.brend.title
-                            = anlog_part.title
-                          %td.part_view_desc= anlog_part.descriptions
-                          %td.part_view_img= image_tag(anlog_part.image.thumb.url)
-                          %td#quan.part_view_quan= anlog_part.quantity
-                          %td.part_view_price
-                          %td.part_view_cart
-                            = form_tag line_items_path(spare_part_id: anlog_part), :method => :post, remote: true do
-                              = button_tag do
-                                = content_tag :i, "" ,class: 'icon-shopping-cart'
+                          = image_tag(anlog_part.brend.image)
+                          = anlog_part.brend.title
+                          = anlog_part.title
+                        %td.part_view_desc= anlog_part.descriptions
+                        %td.part_view_img= image_tag(anlog_part.image.thumb.url)
+                        %td{colspan: "4"}
+                          %table.table
+                            -anlog_part.price_parts.limit(1).each  do |price|
+                              %tr
+                                %td=price.quantity
+                                   
+                                %td
+                                  = number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                 
+                                %td
+                                  = price.delivery 
+                                  дн
+                                %td
+                                  = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                                    = button_tag do
+                                      = content_tag :i, "" ,class: 'icon-shopping-cart'

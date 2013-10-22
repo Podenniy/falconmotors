@@ -14,6 +14,7 @@ class CartsController < InheritedResources::Base
     else
       respond_to do |format|
         format.html #show.html.haml
+        format.js
         format.json { render  json:@cart }
       end
     end
