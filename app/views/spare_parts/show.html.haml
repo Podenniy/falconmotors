@@ -16,7 +16,7 @@
 %p
   %strong= model_class.human_attribute_name t('spare_part.price') + ':'
   %br
-  =  number_to_currency(@spare_part.price, unit: "UA", format: "%n %u")
+  /=  number_to_currency(@spare_part.price_part, unit: "UA", format: "%n %u")
 %p
   %strong= model_class.human_attribute_name t('spare_part.brend')
   %br
