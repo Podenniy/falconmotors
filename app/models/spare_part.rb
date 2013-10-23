@@ -8,7 +8,7 @@ class SparePart < ActiveRecord::Base
   has_many :children,  :class_name => "SparePart",:foreign_key => "parent_id",:dependent => :destroy
   before_destroy :ensure_not_referenced_by_any_line_item
 	validates :title, :descriptions,  presence: true
-	validates :price, numericality: {greater_than_or_equal_to: 0.01}
+	#validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :title, uniqueness: true,  :length => {
   :minimum => 7,
   :message => "Должно быть 10 символов"
