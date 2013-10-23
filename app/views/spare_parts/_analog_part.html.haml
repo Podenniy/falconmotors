@@ -1,0 +1,79 @@
+- @spare_parts.each do |spare_part|
+  - unless spare_part.children.empty?     
+
+    -spare_part.children.each do |analog_part|
+      %tr
+        %td.part_view
+
+          = image_tag(analog_part.brend.image)
+          = analog_part.brend.title
+          = analog_part.title
+        %td.part_view_desc= analog_part.descriptions
+        %td.part_view_img= image_tag(analog_part.image.thumb.url)
+        %td{colspan: "4"}
+          %table.table
+            -analog_part.price_parts.limit(1).each  do |price|
+              %tr
+                %td=price.quantity
+             
+                %td
+                  = number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                 
+                %td
+                  = price.delivery 
+                  дн
+                %td
+                  = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                    = button_tag do
+                      = content_tag :i, "" ,class: 'icon-shopping-cart'
+  - else
+    %tr
+      %td.part_view
+
+        = image_tag(spare_part.parent.brend.image)
+        = spare_part.parent.brend.title
+        = spare_part.parent.title
+      %td.part_view_desc= spare_part.parent.descriptions
+      %td.part_view_img= image_tag(spare_part.parent.image.thumb.url)
+      %td{colspan: "4"}
+        %table.table
+          -spare_part.parent.price_parts.limit(1).each  do |price|
+            %tr
+              %td=price.quantity
+             
+              %td
+                = number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                 
+              %td
+                = price.delivery 
+                дн
+              %td
+                = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                  = button_tag do
+                    = content_tag :i, "" ,class: 'icon-shopping-cart'
+    - SparePart.where(parent_id:spare_part.parent_id).each do |analog_part|
+      -unless spare_part == analog_part
+        %tr
+          %td.part_view
+
+            = image_tag(analog_part.brend.image)
+            = analog_part.brend.title
+            = analog_part.title
+          %td.part_view_desc= analog_part.descriptions
+          %td.part_view_img= image_tag(analog_part.image.thumb.url)
+          %td{colspan: "4"}
+            %table.table
+              -analog_part.price_parts.limit(1).each  do |price|
+                %tr
+                  %td=price.quantity
+             
+                  %td
+                    = number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                 
+                  %td
+                    = price.delivery 
+                    дн
+                  %td
+                    = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                      = button_tag do
+                        = content_tag :i, "" ,class: 'icon-shopping-cart'
