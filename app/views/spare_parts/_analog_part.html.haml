@@ -10,7 +10,7 @@
           = analog_part.title
         %td.part_view_desc= analog_part.descriptions
         %td.part_view_img= image_tag(analog_part.image.thumb.url)
-        %td{colspan: "4"}
+        %td#supplier_id{colspan: "4"}
           %table.table
             -analog_part.price_parts.limit(1).each  do |price|
               %tr
@@ -30,14 +30,14 @@
     %tr
       %td.part_view
 
-        = image_tag(spare_part.parent.brend.image)
-        = spare_part.parent.brend.title
-        = spare_part.parent.title
-      %td.part_view_desc= spare_part.parent.descriptions
-      %td.part_view_img= image_tag(spare_part.parent.image.thumb.url)
-      %td{colspan: "4"}
+        = image_tag(spare_part.brend.image)
+        = spare_part.brend.title
+        = spare_part.title
+      %td.part_view_desc= spare_part.descriptions
+      %td.part_view_img= image_tag(spare_part.image.thumb.url)
+      %td#supplier_id{colspan: "4"}
         %table.table
-          -spare_part.parent.price_parts.limit(1).each  do |price|
+          -spare_part.price_parts.limit(1).each  do |price|
             %tr
               %td=price.quantity
              
@@ -61,7 +61,7 @@
             = analog_part.title
           %td.part_view_desc= analog_part.descriptions
           %td.part_view_img= image_tag(analog_part.image.thumb.url)
-          %td{colspan: "4"}
+          %td#supplier_id{colspan: "4"}
             %table.table
               -analog_part.price_parts.limit(1).each  do |price|
                 %tr
@@ -77,3 +77,5 @@
                     = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
                       = button_tag do
                         = content_tag :i, "" ,class: 'icon-shopping-cart'
+      -else
+        %tr

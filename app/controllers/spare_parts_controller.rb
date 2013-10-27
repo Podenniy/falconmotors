@@ -20,9 +20,13 @@ class SparePartsController < InheritedResources::Base
       end
     end
   def search
-   
+    if params[:q][:title_cont] == ""
+     redirect_to store_url, notice: 'В поиск ничего не было введено'
+    else
     SparePart
     render 'search_table'
+    end
+    
   end
   
   def who_bought
