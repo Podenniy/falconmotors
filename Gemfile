@@ -52,6 +52,7 @@ group  :development, :test do
   gem 'rspec-rails', "~> 2.14.0" 
   gem 'factory_girl', "~> 4.2.0"
   gem 'mysql2'
+  gem "letter_opener", "~> 1.1.2"
 end
 
 group :production do
