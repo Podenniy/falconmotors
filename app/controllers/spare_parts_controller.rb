@@ -23,8 +23,12 @@ class SparePartsController < InheritedResources::Base
     if params[:q][:title_cont] == ""
      redirect_to store_url, notice: 'В поиск ничего не было введено'
     else
-    SparePart
-    render 'search_table'
+     if @spare_parts.empty?
+      redirect_to store_url, notice: 'По вашему поиску ничего не найдено'
+     else
+      SparePart
+      render 'search_table'
+     end
     end
     
   end
