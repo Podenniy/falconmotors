@@ -1,5 +1,5 @@
-!!! 5
-%html(lang="en")
+!!!
+%html
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -17,41 +17,75 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Falconmotors
-          .container.nav-collapse
-            = render "layouts/share/top_menu"
-    .container-fluid
-     
-      .row-fluid
-        
-        .span10.offset1
-          = render "layouts/share/search_spare_auto"
-          /.span2
-          /  .well.sidebar-nav.left_sidebar
-          /    %h3 
-          /    %ul.nav.nav-list
-          /      %li.nav-header Sidebar
-          /      %li= link_to "Link 1", "/path1"
-          /      %li= link_to "Link 2", "/path2"
-          /      %li= link_to "Link 3", "/path3"
-          
+    .wrapper
+      .header
+        .hd-line
+        .hd-bg
+          .hd-cent
+            .hd-left
+              
+              .social
+                .soc-item{onclick: "window.open('https://facebook.com')"}
+                  %img{src: "http://falconmotors.az//css/images/fb.png"}/
+                  На Фейсбуке
+                .soc-item{onclick: "window.open('https://twitter.com')"}
+                  %img{src: "http://falconmotors.az//css/images/twt.png"}/
+                  На Твиттере
+            .logo
+              %a{href: "http://falconmotors.az/"}
+                %img{src: "http://falconmotors.az//css/images/flogo.png"}/
+            .hd-right
+              .tel
+                %span (0432) 61-23-48
+              .skype
+                %img{src: "http://falconmotors.az//css/images/skype.png"}/
+                %span Skype:
+                %a{href: "callto://falconmotors"} falconmotors
+                %span |
+                %a{href: "mailto:falcon.vinnica@gmail.com"} falcon.vinnica@gmail.com 
+      .grad
+      .bg_ypon
+      .index-cont
+        .shad-l
+        =render "layouts/share/search_spare_auto" 
+        .shad-r  
+        %div{style: "clear:both;"}
+      .store_index
+        = yield
+        .clear
+        #cart_wrap
+        %div{style: "clear:both;"}
+        .allcar
+          Смотреть всем
+      .footer
+        .bot-logo
+          %a{href: "http://falconmotors.az/"}
+            %img{src: "http://falconmotors.az//css/images/bottom-logo.png"}/
+        .footer-cent
+          © 2013 Falcon Motors                                Создание Веб-Сайта -
+          %a{href: "http://rahimoff.az"}
+            %img{src: "http://falconmotors.az//css/images/rahimoff.png"}/
+    :javascript
+      $(document).ready(function(){
             
-             
-          .store_index
-            -if notice
-              #notise_id
-                = bootstrap_flash
-           
-            = yield
-            #cart_wrap
-      %footer
-        %p &copy; Company 2013
+            $("#slider").easySlider({
+                controlsShow: true,
+                      pause:3000,
+                      speed:500,                
+              auto: true, 
+              continuous: true,
+                      numeric:    true,
+                      numericId:    'controls'  
+                                    
+                      
+            });
+                  
+                 $('#controls a').html(''); 
+                 
+          });
+    %script{src: "http://falconmotors.az/js/jquery.ezmark.min.js", type: "text/javascript"}
+    :javascript
+      $(function() {
+        $('.defaultP input').ezMark();
+      });

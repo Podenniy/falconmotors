@@ -1,20 +1,29 @@
 .wrap_search_parts_auto
   .search_search_parts_auto
-    %h4 Поиск:
+    %h4 Поиск авто-зап-частей:
     %ul.nav.nav-tabs
       %li
-        %a{"data-toggle" => "tab", href: "#spares_search"} По номеру
+        %a{"data-toggle" => "tab", href: "#spares_search"} По номеру артикула
       %li
         %a{"data-toggle" => "tab", href: "#auto_search"} По машинам
+    .bg_search
+      
     
+    .clear
   .tab-content
     #spares_search.tab-pane.active
       = search_form_for @search_spares, url: search_spare_parts_path, html: {class: "form-search",  method: :post } do |f|
         .field
           //= f.label :title_cont
-          = f.text_field :title_cont, class: "input-medium search-query"
+          = f.text_field :title_cont, :placeholder => "Ваш Артикул", class: "input-medium search-query"
         .form-actions
-          = f.submit "search", class: "btn btn-small"
+          = f.submit "поиск", class: "btn btn-small"
+      
 
+      -if notice
+        #notise_id
+          = bootstrap_flash
+      .clear 
+      
     #auto_search.tab-pane ...
     

@@ -3,10 +3,11 @@
   =render "carts/empty_cart"
 - else
   #cart_id
-    -if notice
+    %h1 
+      %span Ваша карта
+        
       #notise_id
         = bootstrap_flash
-    %h1 Ваша карта
     %table#cart_table.table.table-condensed.table-bordered.index_part_table.cart_table
       %thead
         %tr.cart_table_title

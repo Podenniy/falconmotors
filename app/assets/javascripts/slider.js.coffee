@@ -1,0 +1,2 @@
+$ ->
+  $(".defaultP input").ezMark()

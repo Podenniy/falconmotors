@@ -11,10 +11,10 @@ class LineItemsController < InheritedResources::Base
      
      unless @cart.line_items.find_by_price_part_id(price) 
       @line_item = @cart.add_price_part( price.id)
-      create!(notice: " Позиция была успешно создана ") { @line_item.cart }
+      create!( notice: " Позиция была успешно создана ") { @line_item.cart }
      else
        logger.error "Попытка добавить дублирующий товар #{params[:id]}"
-       create!(notice: " Предложение выбранного поставщика уже есть в корзине. Выберите другой товар или вариант поставки " ) { @cart }
+       create!( alert:  " Предложение выбранного поставщика уже есть в корзине. Выберите другой товар или вариант поставки " ) { @cart }
      end
        #logger.error "Попытка добавить дублирующий товар #{params[:id]}"
        #create!(notice: " Предложение выбранного поставщика уже есть в корзине. Выберите другой товар или вариант поставки " ) { @line_item.cart }

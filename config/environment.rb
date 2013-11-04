@@ -10,7 +10,7 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :user_name      => ENV['Dima'],
   :password       => ENV['123'],
-  :domain         => 'heroku.com',
+  :domain         => 'falconmotors.herokuapp.com',
   :enable_starttls_auto => true
 }
 

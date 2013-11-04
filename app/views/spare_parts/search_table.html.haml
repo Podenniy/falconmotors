@@ -29,19 +29,20 @@
                 %table.table.table-condensed.search_table2
                   - @spare_parts.each do |spare_part|
 
-                    %tr
+                    %tr.viev_art.info
                       %td.part_view
                         = image_tag(spare_part.brend.image)
-                        = spare_part.brend.title
-                        = spare_part.title
+                        %strong 
+                          = spare_part.brend.title
+                          = spare_part.title
                       %td.part_view_desc
                         = spare_part.descriptions
                       %td.part_view_img
                         = image_tag(spare_part.image.thumb.url)
                       %td#supplier_id{colspan: "4"}
-                        %table.table
+                        %table.table.sup_id.table-hover
                           -spare_part.price_parts.each do |price|
-                            %tr
+                            %tr.info
                               %td
                                 = price.quantity 
                                 шт
@@ -51,10 +52,10 @@
                               %td
                                 = price.delivery 
                                 дн
-                              %td
+                              %td.bt_cart
                                 = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
                                   = button_tag do
-                                    = content_tag :i, "" ,class: 'icon-shopping-cart'
+                                    = content_tag :i, "" ,class: "icon-shopping-cart icon-white"
       %tr                     
         %td{colspan: "7"} 
           .accordion-group
