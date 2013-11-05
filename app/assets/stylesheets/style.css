@@ -38,7 +38,7 @@ input {
     width:990px;
 	margin:0 auto;
 	
-	
+	position: relative;
 }
 
 .header
@@ -375,7 +375,7 @@ position
       height:103px;   
       top:166px;
       width: 100%;
-      z-index: 1;
+     
 }
 
 .insumn

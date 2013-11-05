@@ -1,1 +1,4 @@
-= sprintf("%2d x %2d", line_item.quantity, truncate(line_item.spare_part.title, lenght:50))
+= sprintf ("%2d x %s",                               
+  line_item.price_part.quantty,                      
+  truncate ( line_item.price_part.spare_part.title , 
+  length: 50 )) 

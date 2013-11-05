@@ -31,3 +31,5 @@ ru:
           descriptions: "Описание"
           image: "Изображение"
           price: "Цена"
+      user:
+        remember_me: "Запомнить меня"

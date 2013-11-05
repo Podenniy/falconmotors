@@ -58,7 +58,103 @@ body{
 	}
 }
 
-.bg_ypon{padding-bottom: 120px; position: absolute; background: url('/assets/brend_logo_ypon.png') repeat-y  0 200px; left:25px; width: 96%; height: 100%; background-size: 100%;  z-index: 1;}
+.bg_ypon{ position: absolute; background: url('/assets/brend_logo_ypon.png') repeat-y ; left:25px; width: 96%; height: 80%; background-size: 100%; }
+
+///sign in  store index
+
+
+.side_for_user{
+  padding: 10px;
+  float:left;
+  width: 160px;
+  h3{
+  	text-align: center;
+  	font-size: 14px;
+  	line-height: 20px;
+  	margin-top: 0;
+  }
+  form{
+  	position: relative;
+  	overflow: hidden;
+  	.form-actions{
+  	  position: absolute;
+  	  top: 36px; 
+  	  left:128px;
+  	  border:none;	
+  	  width:30px;
+  	  button{
+  	  	width: 25px;
+  	  	height: 26px;
+  	  }
+  	}
+  	.form-inputs, .form-actions{
+  	  float: left;
+  	  .user_remember_me{
+  	  	overflow: hidden;
+        .boolean {  
+          font-size: 13px;
+          line-height: 18px; 
+  		  padding: 0;
+  		  margin: 0;
+  		  float: left;
+  		  #user_remember_me{
+  		  	float: left;
+  		  	width: 20px;
+  		  	margin: 0 4px 0 0;
+  		  	font-size: 13px;
+  		  }
+  		}
+  	  }
+  		
+  	}
+  	.form-actions{
+  		margin: 0;
+  		padding: 0;
+  	}
+  }
+  form input{
+  	width: 120px;
+  	padding: 0 4px;
+  	height: 24px;
+  }
+
+
+  .user_n, .out{
+  	overflow: hidden;
+   float: left;
+  	margin-bottom:10px;
+  	span{
+  	 margin: 0 3px 0 0 ;
+  	 padding-top: 2px;	
+  	}
+  	span, strong{
+     float: left;
+     font-size: 11px;
+     line-height: 16px;
+
+  	}
+    a{
+     text-decoration: none;
+     font-size: 14px;
+     font-weight: bold;
+     text-transform: uppercase;
+     color:#333;
+     display: block; 
+     height: 30px;
+     border-radius: 18px;
+     border: 1px solid #ccc;
+     line-height: 30px;
+     padding: 0 11px 0 9px;
+     .icon-arrow-left{
+       padding-top: 8px;
+     }
+     &:hover{
+     	background: #ca2938;
+     	color: #fff;
+     }
+    }
+  }
+}
 // Since bootstrap was imported above you have access to its mixins which
 // you may use and inherit here
 //

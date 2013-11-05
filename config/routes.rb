@@ -1,4 +1,12 @@
 Falconmotors::Application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+  registrations: "users/registrations",
+  passwords: "users/passwords"
+   }
+  
+  resources :users
+  
   resources :price_parts
 
   resources :suppliers
