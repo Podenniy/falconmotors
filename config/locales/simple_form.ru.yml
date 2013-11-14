@@ -33,3 +33,13 @@ ru:
           price: "Цена"
       user:
         remember_me: "Запомнить меня"
+        legal_entity: "Вид договора"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        patronymic: "Отчество"
+        user_organization: "Имя органзации"
+        user_telephon: "Моб-тлефон"
+        user_login: "Ваш логин"
+        email: "Эллектронный адрес"
+        password: "Пароль"
+        password_confirmation: "Подтвердите пароль"

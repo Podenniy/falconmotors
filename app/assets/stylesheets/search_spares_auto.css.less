@@ -56,14 +56,32 @@
 	}
 	#spares_search{
      overflow: hidden;
+     height: 100px;
+     .href_cart{
+        position:relative; margin: 0 200px 0 0;  float: right; width: 750px ; height: 40px ; border-bottom: 4px solid #333;
+       a{position: absolute; right: 0 ; bottom: 0; display: block; padding: 0;
+         img{ 
+         }
+       }
+     }
      form{
      	float: left;
      	margin-left: 1%;
+      margin: 10px 0 0 1% ;
+      
      	.field, .form-actions{
      		display: inline-block;
      		margin: 0 10px 0 0;
      		padding: 0;
      	}
+      .field{
+       input{width: 550px; border-radius: 6px;}
+
+      }
+      .form-actions{
+        padding: 0;
+        button{margin: 0;}
+      }
      }
 	}
 }

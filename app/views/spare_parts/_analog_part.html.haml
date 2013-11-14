@@ -23,9 +23,13 @@
                   = price.delivery 
                   дн
                 %td.bt_cart
-                  = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
-                    = button_tag do
-                      = content_tag :i, "" ,class: "icon-shopping-cart icon-white"
+                  - if user_signed_in?
+                    = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                      = button_tag class:"btn btn-mini" do
+                        = content_tag :i, "" ,class: "icon-shopping-cart icon-white"
+                  -else
+                    = link_to new_user_session_path, class:"btn btn-mini" do
+                      %i.icon-shopping-cart
   - else
     %tr
       %td.part_view
@@ -51,10 +55,13 @@
                 = price.delivery 
                 дн
               %td.bt_cart
-                = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
-                  = button_tag do
-                    = content_tag :i, "" ,class: 'icon-shopping-cart'
-
+                -if user_signed_in?
+                  = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                    = button_tag class:"btn btn-mini" do
+                      = content_tag :i, "" ,class: 'icon-shopping-cart'
+                -else
+                  = link_to new_user_session_path, class:"btn btn-mini" do
+                    %i.icon-shopping-cart
     -spare_part.parent.children.each do |child|
       - if child != spare_part
 
@@ -83,10 +90,13 @@
                     = price.delivery 
                     дн
                   %td.bt_cart
-                    = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
-                      = button_tag do
-                        = content_tag :i, "" ,class: 'icon-shopping-cart'
-
+                    -if  user_signed_in?
+                      = form_tag line_items_path(price_id: price), :method => :post, remote: true  do
+                        = button_tag class:"btn btn-mini" do
+                          = content_tag :i, "" ,class: 'icon-shopping-cart'
+                    -else
+                      = link_to new_user_session_path, class:"btn btn-mini" do
+                        %i.icon-shopping-cart
 
 
       

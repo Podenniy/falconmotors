@@ -1,5 +1,5 @@
-if ($('.falcon_form')) {
-   $('.falcon_form').hide();
+if ($('.falcon_form ,.info_block')) {
+   $('.falcon_form, .info_block').hide();
    $('#cart_wrap').html("<%=j render @cart %>");
    $('#cart_id').show('slide', 1000);
   }else{

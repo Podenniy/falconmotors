@@ -1,5 +1,5 @@
 class StoreController < ApplicationController
- 
+  before_action :cart
   before_action :menu
   before_action :user_f
   def index
@@ -18,4 +18,7 @@ class StoreController < ApplicationController
    def menu
      @category_menu = category_menu
    end
+   def cart
+      @cart = current_cart
+  end
 end

@@ -38,7 +38,7 @@ body{
 	 margin-top: 0px;
 	 
 	 position: relative;
-	 top:-32px;
+	 
 	 .info_block{
 	 	float: right;
 	 	width: 600px;
@@ -49,8 +49,8 @@ body{
 }
 #notise_id{
 	float: left;
-	min-width: 400px;  
-	min-width: 750px; 
+	width: 600px;  
+	 margin-top: 10px;
 	font-size: 12px; 
 	font-weight: normal;
 	div{
@@ -60,22 +60,35 @@ body{
 
 .bg_ypon{ position: absolute; background: url('/assets/brend_logo_ypon.png') repeat-y ; left:25px; width: 96%; height: 80%; background-size: 100%; }
 
-///sign in  store index
+///sign in 
 
 
 .side_for_user{
   padding: 10px;
   float:left;
-  width: 160px;
-  h3{
-  	text-align: center;
-  	font-size: 14px;
-  	line-height: 20px;
-  	margin-top: 0;
+  width: 175px;
+
+  ul {
+    margin: 0 0 15px 0;
+    padding: 0;
+    li {overflow: hidden; margin-bottom: 5px;
+      a{font-family: Calibri; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; float: left; border:3px solid #ffffff; border-radius: 4px; background: #707070; color:#f0f0f0; height: 26px; line-height: 26px; text-decoration: none; padding: 0 9px;
+        &:hover{
+          background: #333; color:#fff; border-color:#333;
+
+         }
+        }
+    }
   }
-  form{
-  	position: relative;
-  	overflow: hidden;
+  .user_cab{
+    border:1px solid #999;
+    border-radius: 3px;
+    padding: 5px 9px;
+    background: #333;
+    color:#f0f0f0;
+  }
+  h3{text-align: center;font-size: 14px; line-height: 20px; margin-top: 0; color:#f0f0f0;}
+  form{ position: relative;width: 100%; overflow: hidden;
   	.form-actions{
   	  position: absolute;
   	  top: 36px; 
@@ -121,7 +134,7 @@ body{
 
   .user_n, .out{
   	overflow: hidden;
-   float: left;
+   
   	margin-bottom:10px;
   	span{
   	 margin: 0 3px 0 0 ;
@@ -131,14 +144,16 @@ body{
      float: left;
      font-size: 11px;
      line-height: 16px;
-
+     display: block;
+     text-transform: uppercase;
   	}
     a{
+      text-align: center;
      text-decoration: none;
      font-size: 14px;
      font-weight: bold;
      text-transform: uppercase;
-     color:#333;
+     color:#f0f0f0;
      display: block; 
      height: 30px;
      border-radius: 18px;
@@ -153,6 +168,29 @@ body{
      	color: #fff;
      }
     }
+  }
+}
+
+//// aplication layaot /// falcon-side
+
+.falcon_side {
+
+  float:left;
+}
+
+
+//// aplication layaot /// falcon-box
+
+.falcon_box{
+  float: right;
+}
+
+
+.empty_cart{
+  width: 800px;
+  text-align: center;
+  h3{margin-top: 100px; background:#ca2d38; border:8px solid #333; color:#fff;
+   span{display: block;  border:2px solid #fff; }
   }
 }
 // Since bootstrap was imported above you have access to its mixins which

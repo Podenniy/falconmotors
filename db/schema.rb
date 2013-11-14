@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104221553) do
+ActiveRecord::Schema.define(version: 20131114001416) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -88,6 +88,12 @@ ActiveRecord::Schema.define(version: 20131104221553) do
     t.integer  "order_id"
   end
 
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spare_parts", force: true do |t|
     t.string   "title"
     t.text     "descriptions"
@@ -109,8 +115,8 @@ ActiveRecord::Schema.define(version: 20131104221553) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -121,9 +127,27 @@ ActiveRecord::Schema.define(version: 20131104221553) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "legal_entity",           default: false
+    t.integer  "user_telephon"
+    t.string   "user_organization"
+    t.string   "user_login"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "patronymic"
+    t.integer  "order_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_roles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_roles", ["role_id"], name: "index_users_roles_on_role_id", using: :btree
+  add_index "users_roles", ["user_id"], name: "index_users_roles_on_user_id", using: :btree
 
 end

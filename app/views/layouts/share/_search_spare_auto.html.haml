@@ -6,7 +6,7 @@
         %a{"data-toggle" => "tab", href: "#spares_search"} По номеру артикула
       %li
         %a{"data-toggle" => "tab", href: "#auto_search"} По машинам
-    .bg_search
+    
       
     
     .clear
@@ -17,12 +17,23 @@
           //= f.label :title_cont
           = f.text_field :title_cont, :placeholder => "Ваш Артикул", class: "input-medium search-query"
         .form-actions
-          = f.submit "поиск", class: "btn btn-small"
+          = f.submit "поиск", class: "btn  btn-inverse"
+      .clear 
+      .href_cart
+        -if notice
+          #notise_id
+            = bootstrap_flash
+          .clear 
+        -if user_signed_in?
+          = link_to @cart, remote: true, class: "cart_img" do
+            %img{:src => "/assets/falkcon _cart.jpg", :alt => ""}/ 
+            Корзина
+            
+        -else
+          = link_to new_user_session_path, class: "cart_img" do
+            %img{:src => "/assets/falkcon _cart.jpg", :alt => ""}/ 
+            Корзина
       
-
-      -if notice
-        #notise_id
-          = bootstrap_flash
       .clear 
       
     #auto_search.tab-pane ...

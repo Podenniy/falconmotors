@@ -1,9 +1,9 @@
 class SparePartsController < InheritedResources::Base
-
+  include ContentHelper
   before_action :menu
   before_action :cart
   before_action :search_parts
-  
+  before_action :resource
     def update
      @spare_part = SparePart.find(params[:id])
       respond_to do |format|
@@ -20,12 +20,14 @@ class SparePartsController < InheritedResources::Base
       end
     end
   def search
+
     if params[:q][:title_cont] == ""
      redirect_to store_url, notice: 'В поиск ничего не было введено'
     else
      if @spare_parts.empty?
       redirect_to store_url, notice: 'По вашему поиску ничего не найдено'
      else
+      @user = current_user
       SparePart
       render 'search_table'
      end
@@ -62,6 +64,8 @@ class SparePartsController < InheritedResources::Base
     def menu
       @category_menu = category_menu
     end
-
-    
+   
+    def resource
+      @resource ||= User.new
+    end
 end

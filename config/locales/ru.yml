@@ -10,7 +10,7 @@ ru:
           update: "Доб/Уд"
       line_item:
         destroy: "Удалить"
-
+  
   category: 
     name: "Создание новой категории"
     cancel: "Вернуться"
@@ -47,3 +47,6 @@ ru:
         name: "Имя"
         password: "Пароль"
       product:
+
+      role:
+        Legal Entity: "Юредическое лицо"

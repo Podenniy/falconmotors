@@ -27,19 +27,19 @@
               
               .social
                 .soc-item{onclick: "window.open('https://facebook.com')"}
-                  %img{src: "http://falconmotors.az//css/images/fb.png"}/
+                  %img{src: "/assets/fb.png"}/
                   На Фейсбуке
                 .soc-item{onclick: "window.open('https://twitter.com')"}
-                  %img{src: "http://falconmotors.az//css/images/twt.png"}/
+                  %img{src: "/assets/twt.png"}/
                   На Твиттере
             .logo
               %a{href: "http://falconmotors.az/"}
-                %img{src: "http://falconmotors.az//css/images/flogo.png"}/
+                %img{src: "/assets/flogo.png"}/
             .hd-right
               .tel
                 %span (0432) 61-23-48
               .skype
-                %img{src: "http://falconmotors.az//css/images/skype.png"}/
+                %img{src: "/assets/skype.png"}/
                 %span Skype:
                 %a{href: "callto://falconmotors"} falconmotors
                 %span |
@@ -52,9 +52,13 @@
         .shad-r  
         %div{style: "clear:both;"}
       .store_index
-        = yield
+        .falcon_side
+          =render "layouts/share/side_cont.html.haml"
+        .falcon_box
+          = yield
+          #cart_wrap
         .clear
-        #cart_wrap
+         
         %div{style: "clear:both;"}
         .allcar
           Смотреть всем

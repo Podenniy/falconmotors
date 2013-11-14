@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   protected
     def configure_permitted_parameters
-       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation)}
+       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids)}
     end
   private
     def current_cart
@@ -36,8 +36,11 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(user)
 
-        store_url(user)
+        user_url(user)
 
+    end
+    def user_f
+     @user = current_user
     end
     
 end

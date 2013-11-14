@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  
+  before_filter :authenticate_user!
   before_action :search_parts
-  
+  before_action :cart
+
   def index
     @users = User.all
   end
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    
     @user = User.new
   end
 
@@ -38,17 +40,25 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-
+  
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, :flash => { :success => 'User was successfully deleted.' }
   end
 
+ 
+  
+  def choice_registration
+    
+    render 'choice_registration'
+    
+
+  end
   private
     def permitted_params
 
-      params.require(:user).permit(:email, :name, :password, :password_confirmation, :remember_me, :role_ids)
+      params.require(:user).permit(:order_id, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids)
     end
 
 
@@ -56,4 +66,8 @@ class UsersController < ApplicationController
        @search_spares = SparePart.search(params[:q])
        @spare_parts = @search_spares.result(distinct: true)
    end
+
+   def cart
+      @cart = current_cart
+  end
 end

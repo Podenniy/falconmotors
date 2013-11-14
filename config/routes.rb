@@ -1,11 +1,17 @@
 Falconmotors::Application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-  registrations: "users/registrations",
-  passwords: "users/passwords"
+    registrations: "users/registrations",
+    passwords: "users/passwords", 
+    
    }
   
-  resources :users
+  resources :users do
+    
+   collection do
+      match 'choice_registration' => 'users#choice_registration', via: [:get, :post], as: :choice_registration
+    end
+  end
   
   resources :price_parts
 

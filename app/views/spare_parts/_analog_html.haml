@@ -39,9 +39,13 @@
                       %td.part_view_price
                         = number_to_currency(spare_part.price, unit: "грн", format: "%n %u")
                       %td.part_view_cart
-                        = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
-                          = button_tag do
-                            = content_tag :i, "" ,class: 'icon-shopping-cart'
+                        -if user_signed_in?
+                          = form_tag line_items_path(spare_part_id: spare_part), :method => :post, remote: true do
+                            = button_tag class:"btn btn-mini"do
+                              = content_tag :i, "" ,class: 'icon-shopping-cart'
+                        -else
+                          = link_to new_user_session_path, class:"btn btn-mini" do
+                            %i.icon-shopping-cart
       %tr
         %td{colspan: "6"} 
           .accordion-group
@@ -65,6 +69,10 @@
                           %td#quan.part_view_quan= anlog_part.quantity
                           %td.part_view_price= number_to_currency(anlog_part.price, unit: "грн", format: "%n %u")
                           %td.part_view_cart
-                            = form_tag line_items_path(spare_part_id: anlog_part), :method => :post, remote: true do
-                              = button_tag do
-                                = content_tag :i, "" ,class: 'icon-shopping-cart'
+                            -if user_signed_in?
+                              = form_tag line_items_path(spare_part_id: anlog_part), :method => :post, remote: true do
+                                = button_tag class:"btn btn-mini" do
+                                  = content_tag :i, "" ,class: 'icon-shopping-cart'
+                            -else
+                              = link_to new_user_session_path, class:"btn btn-mini" do
+                                %i.icon-shopping-cart
