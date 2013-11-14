@@ -2,7 +2,7 @@
   - if spare_part.parent_id == nil   
 
     -spare_part.children.each do |analog_part|
-      %tr.info
+      %tr.viev_art.info
         %td.part_view
           = image_tag(analog_part.brend.image)
           %strong 
@@ -31,7 +31,7 @@
                     = link_to new_user_session_path, class:"btn btn-mini" do
                       %i.icon-shopping-cart
   - else
-    %tr
+    %tr.viev_art.info
       %td.part_view
 
         = image_tag(spare_part.parent.brend.image)
@@ -43,9 +43,9 @@
 
     
 
-        %table.table
+        %table.table.table-hover
           -spare_part.parent.price_parts.limit(1).each  do |price|
-            %tr
+            %tr.info
               %td=price.quantity
              
               %td
@@ -65,7 +65,7 @@
     -spare_part.parent.children.each do |child|
       - if child != spare_part
 
-        %tr
+        %tr.viev_art.info
           %td.part_view
 
             = image_tag(child.brend.image)
@@ -78,9 +78,9 @@
 
     
 
-            %table.table
+            %table.table.table-hover
               -child.price_parts.limit(1).each  do |price|
-                %tr
+                %tr.info
                   %td=price.quantity
              
                   %td
