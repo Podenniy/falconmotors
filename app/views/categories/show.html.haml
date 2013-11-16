@@ -3,6 +3,12 @@
 %p
   %b Name:
   = @category.name
+%p
+  %b Image:
+  = @category.image
+%p
+  %b Parent:
+  = @category.parent_id
 
 = link_to 'Edit', edit_category_path(@category)
 \|

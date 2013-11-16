@@ -4,7 +4,7 @@ class StoreController < ApplicationController
   before_action :user_f
   def index
   	
-  	@category_menu = Category.all.where(:parent_id => nil)
+  	@category = Category.all.where(:name => "Универсальные товары")
 
   	@search_spares = SparePart.search(params[:q])
     @spare_parts = @search_spares.result(distinct: true)

@@ -9,6 +9,7 @@ body {
     overflow-x:hidden;
     background:#f3f3f3;
 
+
 }
 
 ul {list-style:none;}
@@ -39,6 +40,7 @@ input {
 	margin:0 auto;
 	
 	position: relative;
+  z-index: 0;
 }
 
 .header
@@ -107,11 +109,31 @@ input {
     width:350px;
     height:95px;
 }
+.hd-left{
+ position: relative;
+
+}
+.hd-left h2{font-size: 22px; font-weight: ; padding: 0; height: 120px; background:url("/assets/zp1.png") no-repeat top left; width: 360px ; text-align: right; position: absolute; text-transform: uppercase; color:#f0f0f0; left:-120px; padding-top: ; top:20px;}
+.hd-left h2 span.in_1{ display: block; position: relative; top:-26px;}
+
+.hd-left h2 span.in_2{}
+.hd-left  span.slog{display: block; margin: 100px 0 0 63px; color:#fff;}
+span.str{ display:block;  background: url("/assets/str3.png") no-repeat top left; height: 71px; width:97px; }
+.hd-left span.str{margin-left: 100px; position: absolute; top :15px; right: 0; }
+.hd-right span.str{margin-top: 15px; float: left;}
 
 .hd-right
-{
+{ overflow: hidden;
    float:right;    
 }
+.hd-right span.str{position: static;}
+.hd-right .info_falcon{ position: absolute; right: 125px; margin-top: 13px;}
+.hd-right .info_falcon ul{
+  text-transform: uppercase; font-family: Arial; font-weight: bold; 
+}
+
+.hd-right .info_falcon ul a{background:#Ca2d38; text-decoration: none; color:#fff; }
+
 
 .lang
 {
@@ -157,9 +179,9 @@ input {
 
 .social
 {
-   float:left;
+   
    width:280px;  
-   margin:60px 0 0 10px; 
+   margin:0 0 0 20px; 
    color: #9b9b9b;
    font:normal 14px Georgia;
 }
@@ -392,6 +414,7 @@ input {
     background: inherit;
     position: relative;
     z-index: 1;
+
     
 }
 
@@ -426,7 +449,7 @@ input {
      float:left;
      margin:0 5px 0 0;
      padding:8px 15px 8px 15px;
-     font:bold 16px Calibri;
+     font:bold 16px 'calibriregular';
      color:#f0f0f0;
      -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
@@ -455,7 +478,7 @@ input {
 {
 
      padding:4px 15px 4px 15px;
-     font:normal 22px Calibri;
+     font:normal 22px 'calibriregular';
 
      text-transform:none;
 }
@@ -684,7 +707,7 @@ span.select2
     margin:10px auto 10px auto;
     text-align:center;
     padding-top:15px;
-    font:normal 16px Calibri;
+    font:normal 16px 'calibriregular';
     cursor:pointer;
 }
 
@@ -701,7 +724,7 @@ span.select2
 {
    width:500px;
    margin:-5px auto 0 auto;
-   font:normal 13px Calibri;
+   font:normal 13px 'calibriregular';
    padding-left:150px;
 }
 .bot-logo
@@ -727,7 +750,7 @@ span.select2
 {
     margin:15px 0 30px; 0 ;
     border-bottom:4px solid #9d9d9d;
-    font:normal 15px Calibri;
+    font:normal 15px Arial;
     padding-bottom:4px;
 }
 .navigator a
@@ -1005,7 +1028,7 @@ button#order
 
 .markinfo
 {
-    font:bold 16px calibri;
+    font:bold 16px 'calibriregular';
     color:#122f85;
     position:relative;
     float:left;
@@ -1047,7 +1070,7 @@ button#order
 
 .load-list-title
 {
-    font:normal 26px Calibri;
+    font:normal 26px ;
     border-bottom:4px solid #d7d7d7;
     padding-bottom:7px;
     margin-bottom:10px;

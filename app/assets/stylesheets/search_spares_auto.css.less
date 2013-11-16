@@ -1,14 +1,29 @@
+.info_falcon{
+   ul{color:#fff; font-size: 13px;
+     .cfr{font-size: 16px;}
+     .mail_f{text-transform: none;}
+     a{text-decoration: underline;}
+     li{margin-bottom: 6px;}
+   }
+
+  }
+
+
 .wrap_search_parts_auto{
 	
      float: left;
      width: 1000px;
-     background: #fff;
+    background: url('/assets/setka_2.jpg') repeat-x ;
      padding: 15px 40px 0 40px;
      position: relative;
+     z-index: 3;
+     ul{border:none;}
+  .info_falcon{ position: absolute; right: 20px; margin-top: 10px;}
+     
   .bg_search{
     width: 187px;
     height: 141px;
-    background: url('/assets/bg-seaerch.png') no-repeat;
+    background: url('/assets/bg-seaerch.jpg') no-repeat;
     position: absolute;
     right: 80px;
     top:20px;
@@ -39,9 +54,10 @@
 	}
 	ul{
     margin-bottom: 10px;
-    font: bold 16px Calibri;
+    font: bold 13px Arial;
+    text-transform: uppercase;
     
-    border-bottom: 5px solid #ca2d38;
+    
      
        li a{
           text-decoration: none;
@@ -56,7 +72,7 @@
 	}
 	#spares_search{
      overflow: hidden;
-     height: 100px;
+     
      .href_cart{
         position:relative; margin: 0 200px 0 0;  float: right; width: 750px ; height: 40px ; border-bottom: 4px solid #333;
        a{position: absolute; right: 0 ; bottom: 0; display: block; padding: 0;
@@ -67,20 +83,28 @@
      form{
      	float: left;
      	margin-left: 1%;
-      margin: 10px 0 0 1% ;
-      
+      margin: 15px 0 0 1% ;
+      background:#ca2d38;
+        padding: 12px 15px 12px 12px;
+        border-radius: 12px 12px 12px 12px;
+        border: 1px solid  #4D4752;
      	.field, .form-actions{
      		display: inline-block;
      		margin: 0 10px 0 0;
      		padding: 0;
      	}
       .field{
-       input{width: 550px; border-radius: 6px;}
+
+       input{width: 550px; border-radius: 6px; border-color: #A9A4A9;}
 
       }
       .form-actions{
+        background: none;
+        border: none;
+        margin-right: 0;
         padding: 0;
-        button{margin: 0;}
+        font-family: Arial;
+        button{margin: 0; }
       }
      }
 	}

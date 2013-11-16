@@ -16,7 +16,7 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-
+    %link{href: "http://fonts.googleapis.com/css?family=Domine:400,700", rel: "stylesheet", type: "text/css"}/
   %body
     .wrapper
       .header
@@ -24,26 +24,45 @@
         .hd-bg
           .hd-cent
             .hd-left
+              %h2 
+                 
+                %span.in_1 
+                  Интернет-магазин
+                  %br/ 
+                  %span.in_2
+                    автозапчастей
+                    %br/ 
+              %span.slog 
+               
               
-              .social
-                .soc-item{onclick: "window.open('https://facebook.com')"}
-                  %img{src: "/assets/fb.png"}/
-                  На Фейсбуке
-                .soc-item{onclick: "window.open('https://twitter.com')"}
-                  %img{src: "/assets/twt.png"}/
-                  На Твиттере
+                
             .logo
               %a{href: "http://falconmotors.az/"}
                 %img{src: "/assets/flogo.png"}/
             .hd-right
-              .tel
-                %span (0432) 61-23-48
-              .skype
-                %img{src: "/assets/skype.png"}/
-                %span Skype:
-                %a{href: "callto://falconmotors"} falconmotors
-                %span |
-                %a{href: "mailto:falcon.vinnica@gmail.com"} falcon.vinnica@gmail.com 
+             
+              .info_falcon
+                %ul 
+                  %li 
+                    %span.cfr 
+                      &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot; &middot;&nbsp;&nbsp;&nbsp;(0432) 61-23-48
+                  %li 
+                    %span.cfr  
+                      &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot; &middot;  &middot;&nbsp;&nbsp;&nbsp;(+380) 9345678
+                  %li 
+                    Email . . . . .
+                    %span.mail_f 
+                      falcon.vinnica@gmail.com
+                    
+
+                .social
+                  .soc-item{onclick: "window.open('https://facebook.com')"}
+                    %img{src: "/assets/fb.png"}/
+                    На Фейсбуке
+                  .soc-item{onclick: "window.open('https://twitter.com')"}
+                    %img{src: "/assets/twt.png"}/
+                    На Твиттере
+            .clear  
       .grad
       .bg_ypon
       .index-cont
@@ -51,17 +70,22 @@
         =render "layouts/share/search_spare_auto" 
         .shad-r  
         %div{style: "clear:both;"}
-      .store_index
-        .falcon_side
-          =render "layouts/share/side_cont.html.haml"
-        .falcon_box
-          = yield
-          #cart_wrap
-        .clear
+        .store_index
+          .fone
+            = image_tag("/assets/bg_index_f.png") 
+          .falcon_side
+            =render "layouts/share/side_cont.html.haml"
+          .falcon_box
+            -if notice
+              #notise_id
+                = bootstrap_flash
+            = yield
+            #cart_wrap
+          .clear
          
-        %div{style: "clear:both;"}
-        .allcar
-          Смотреть всем
+          %div{style: "clear:both;"}
+          .allcar
+            Смотреть всем
       .footer
         .bot-logo
           %a{href: "http://falconmotors.az/"}
@@ -70,26 +94,4 @@
           © 2013 Falcon Motors                                Создание Веб-Сайта -
           %a{href: "http://rahimoff.az"}
             %img{src: "http://falconmotors.az//css/images/rahimoff.png"}/
-    :javascript
-      $(document).ready(function(){
-            
-            $("#slider").easySlider({
-                controlsShow: true,
-                      pause:3000,
-                      speed:500,                
-              auto: true, 
-              continuous: true,
-                      numeric:    true,
-                      numericId:    'controls'  
-                                    
-                      
-            });
-                  
-                 $('#controls a').html(''); 
-                 
-          });
-    %script{src: "http://falconmotors.az/js/jquery.ezmark.min.js", type: "text/javascript"}
-    :javascript
-      $(function() {
-        $('.defaultP input').ezMark();
-      });
+    

@@ -48,6 +48,7 @@ gem "cancan"
 gem "carrierwave", "~> 0.9.0"
 gem "mini_magick", "~> 3.6.0"
 gem "ransack", "~> 1.0.0"
+gem 'seed-fu', github: 'mbleigh/seed-fu'
 group  :development, :test do
   gem 'rspec-rails', "~> 2.14.0" 
   gem 'factory_girl', "~> 4.2.0"

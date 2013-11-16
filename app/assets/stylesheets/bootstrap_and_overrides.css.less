@@ -21,6 +21,31 @@
 // Your custom LESS stylesheets goes here
 
 
+
+@font-face {
+    font-family: 'calibriregular';
+    src: url("calibri-webfont.eot");
+    src: url("calibri-webfont.eot?#iefix") format('embedded-opentype'),
+         url("calibri-webfont.woff") format('woff'),
+         url("calibri-webfont.ttf") format('truetype'),
+         url("calibri-webfont.svg#calibriregular") format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'calibribold';
+    src: url('calibrib-webfont.eot');
+    src: url('calibrib-webfont.eot?#iefix') format('embedded-opentype'),
+         url('calibrib-webfont.woff') format('woff'),
+         url('calibrib-webfont.ttf') format('truetype'),
+         url('calibrib-webfont.svg#calibribold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body{
 	 background:#f3f3f3;
 	.wrap{
@@ -32,20 +57,21 @@ body{
 }
 .store_index{
 	background: #fff;
+  min-height: 650px;
+   position: relative;
 	 width: 1020px;
 	 margin:0 auto;
-	 padding: 20px 30px;
+	 padding: 40px 30px 0 30px;
 	 margin-top: 0px;
 	 
 	 position: relative;
+   z-index: 1;
+	 .fone{  position: absolute;  width: 100%; left:0; top:-92px; height: 110%; background: url("/assets/logofalcon_b.jpg") repeat-y ;
+     img{ position: absolute; top:60px; left:150px; height:620px; width: 815px; }
+
+   
+   }
 	 
-	 .info_block{
-	 	float: right;
-	 	width: 600px;
-	 	margin-right: 15px;
-	 	font-size: 14px;
-	 	line-height: 20px;
-	 }
 }
 #notise_id{
 	float: left;
@@ -58,7 +84,7 @@ body{
 	}
 }
 
-.bg_ypon{ position: absolute; background: url('/assets/brend_logo_ypon.png') repeat-y ; left:25px; width: 96%; height: 80%; background-size: 100%; }
+.bg_ypon{ position: absolute; background: url('/assets/brend_logo_ypon.png') repeat-y ; left:25px; width: 96%; height:100% !important; top:180px; background-size: 100%;  z-index: 0;}
 
 ///sign in 
 
@@ -67,14 +93,15 @@ body{
   padding: 10px;
   float:left;
   width: 175px;
-
+   background: none;
+   border:none;
   ul {
     margin: 0 0 15px 0;
     padding: 0;
     li {overflow: hidden; margin-bottom: 5px;
-      a{font-family: Calibri; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; float: left; border:3px solid #ffffff; border-radius: 4px; background: #707070; color:#f0f0f0; height: 26px; line-height: 26px; text-decoration: none; padding: 0 9px;
+      a{font-family: Arial; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; float: left;  border-radius: 3px; background: none; color:#ffffff; height: 28px; line-height: 30px; text-decoration: none; padding: 0 9px;
         &:hover{
-          background: #333; color:#fff; border-color:#333;
+          background: #333; color:#f0f0f0; border-color:#333;
 
          }
         }
@@ -86,6 +113,7 @@ body{
     padding: 5px 9px;
     background: #333;
     color:#f0f0f0;
+    a{color:#fff; font-size: 13px; }
   }
   h3{text-align: center;font-size: 14px; line-height: 20px; margin-top: 0; color:#f0f0f0;}
   form{ position: relative;width: 100%; overflow: hidden;
@@ -174,7 +202,9 @@ body{
 //// aplication layaot /// falcon-side
 
 .falcon_side {
-
+ position: relative;
+ z-index: 2;
+ 
   float:left;
 }
 
@@ -182,14 +212,19 @@ body{
 //// aplication layaot /// falcon-box
 
 .falcon_box{
+  
+  position: relative;
+ z-index: 2;
+ 
   float: right;
+  width: 800px;
 }
 
 
 .empty_cart{
-  width: 800px;
+  
   text-align: center;
-  h3{margin-top: 100px; background:#ca2d38; border:8px solid #333; color:#fff;
+  h3{margin-top: 30px; background:#ca2d38; border:8px solid #333; color:#fff;
    span{display: block;  border:2px solid #fff; }
   }
 }

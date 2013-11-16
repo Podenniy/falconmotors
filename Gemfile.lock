@@ -6,6 +6,14 @@ GIT
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
 
+GIT
+  remote: git://github.com/mbleigh/seed-fu.git
+  revision: 8a7b0fddbed0fddda0250204235ce2c51a5acd13
+  specs:
+    seed-fu (2.3.0)
+      activerecord (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -228,6 +236,7 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
   sdoc
+  seed-fu!
   simple_form
   therubyracer
   turbolinks

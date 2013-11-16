@@ -1,4 +1,6 @@
 Falconmotors::Application.routes.draw do
+  resources :categories
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: "users/registrations",
@@ -20,8 +22,6 @@ Falconmotors::Application.routes.draw do
   resources :orders
 
   resources :brends
-
-  resources :categories
 
   resources :line_items
 
