@@ -43,3 +43,6 @@ ru:
         email: "Эллектронный адрес"
         password: "Пароль"
         password_confirmation: "Подтвердите пароль"
+      order:
+        pyment_type: "Метод оплаты"
+        delivery_method: "Способ доставки"

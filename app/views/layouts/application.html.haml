@@ -17,6 +17,7 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
     %link{href: "http://fonts.googleapis.com/css?family=Domine:400,700", rel: "stylesheet", type: "text/css"}/
+    
   %body
     .wrapper
       .header
@@ -75,7 +76,8 @@
             = image_tag("/assets/bg_index_f.png") 
           .falcon_side
             =render "layouts/share/side_cont.html.haml"
-          .falcon_box
+            
+          .falcon_box 
             -if notice
               #notise_id
                 = bootstrap_flash

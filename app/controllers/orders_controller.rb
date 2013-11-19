@@ -10,6 +10,8 @@ class OrdersController < InheritedResources::Base
   end
 
   def new
+    
+    @user = current_user
   	if@cart.line_items.empty?
       new!(notice: "Ваша карта пуста"){ store_url }
       return
@@ -19,8 +21,10 @@ class OrdersController < InheritedResources::Base
   end
   
   def create
+    @user = current_user
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(current_cart)
+    @order.user_ord(@user)
     create! do |format|
       if@order.save
         Cart.destroy(session[:cart_id])

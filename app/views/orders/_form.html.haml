@@ -3,12 +3,43 @@
     = f.error_notification
   
     .form-inputs
-      = f.input :name
-      = f.input :address
-      = f.input :email
-      = f.association  :pyment_type, as: :radio_buttons
-      = f.association :delivery_method, as: :radio_buttons
-  
-    .form-actions
-      = f.button :submit
-  = button_to 'Отменить заказ', @cart, method: :get , :class => 'btn btn-inverse ',remote: true
+     
+      = f.association  :pyment_type, as: :radio_buttons, class: "py"
+      = f.association :delivery_method, as: :radio_buttons, class: "py"
+    .cart_ord
+      %table.table.table-bordered
+        %tr 
+          %th
+            фирма
+          %th
+            код детали
+          %th 
+            описание
+          %th 
+            колличество
+          %th 
+            цена
+          %th 
+            сумма
+          - @cart.line_items.each do |item|
+            %tr
+              %td
+                =item.price_part.spare_part.brend.title
+              %td
+                =item.price_part.spare_part.title
+              %td
+                =item.price_part.spare_part.descriptions 
+              %td
+                =item.quantity
+              %td
+                = number_to_currency(item.price_part.price , unit: "Грн",   format:"%n %u")   
+              %td
+                = number_to_currency(item.total_price , unit: "Грн",   format:"%n %u")   
+          %tr 
+            %td{colspan:"4"} 
+              Общая сумма:
+            %td{colspan:"2"} 
+              =@cart.total_price
+    .form-actions#bg_ser
+      = f.submit " Заказать", class: "btn btn-primary"
+  = button_to 'Изменить содержимое корзины заказ', @cart, method: :get , :class => 'btn btn-danger btn_nor ', :id => 'bt_nor',remote: true

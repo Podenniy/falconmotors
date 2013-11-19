@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  $("#nav-shadow a").hover (->
+    $(this).css "fontSize", "100px"
+    $(this).css "color", "blue"
+    
+  ), ->
+    $(this).css "fontSize", "1em"
+    $(this).css "color", "black"
+    $(this).html "Я обычный параграф."

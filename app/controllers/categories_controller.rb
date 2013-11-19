@@ -3,14 +3,14 @@ class CategoriesController < InheritedResources::Base
    before_action :cart
    before_action :search_parts
    before_action :resource
-   before_action :find, :only => [:show, :destroy]
+   before_action :find, :only => [:show, :destroy,  :update]
    
    def new
     @category = Category.new
     new!
    end
 
-
+  
    def destroy
     @category.destroy
     destroy!

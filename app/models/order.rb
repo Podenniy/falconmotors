@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
  belongs_to :pyment_type
  belongs_to :delivery_method
  belongs_to :user
- validates :name, :address, :email, presence: true
+ validates :name,  :email, presence: true
  #validates :pay_type, inclusion: 
 
  def add_line_items_from_cart(cart)
@@ -11,5 +11,10 @@ class Order < ActiveRecord::Base
    	 item.cart_id = nil
    	 line_items <<  item
    end
+ end
+
+ def user_ord(user)
+ 	self.name = user.first_name
+ 	self.email = user.email
  end
 end

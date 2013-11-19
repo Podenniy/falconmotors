@@ -2,45 +2,17 @@
 .info_block.well
   -@category.each do |cat|
     %h2 
-      = cat.name
-    -cat.children.each_with_index do |chil, index|
-      -if index == 0
-        .lf.univ_item
-          =link_to  chil, class: "well" do
-            = image_tag chil.image
-            %span 
-              = chil.name
-      -if index == 1
-        .lfb.univ_item
-          =link_to  chil, class: "well" do
-            = image_tag chil.image
-            %span 
-              = chil.name
-
-      -if index == 2
-        .rt.univ_item
-          =link_to  chil, class: "well" do
-            = image_tag chil.image
-            %span 
-              Масла
-              %br/ 
-              и
-              %br/ 
-              смазки
-
-      -if index == 3
-        .rtb.univ_item
-          =link_to  chil, class: "well" do
-            = image_tag chil.image
-            %span 
-              Антифриз
-              %br/ 
-              и
-              %br/ 
-              омыватели
-      -if index == 4
-        .rtb.univ_item
-          =link_to  chil, class: "well" do
-            = image_tag chil.image
-            %span 
-              = chil.name
+      %span.br 
+        %span.cont_s
+          = cat.name
+    
+    .cont_univ
+      %ul#nav-shadow
+        -cat.children.each_with_index do |chil, index|
+          %li{class: "univ_#{index} well"}
+            =link_to  chil do
+              = image_tag chil.image, class: "msl"
+              %span 
+                = chil.name
+              
+      .clear

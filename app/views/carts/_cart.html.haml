@@ -15,6 +15,7 @@
           %th=  t('spare_part.show_title')
           %th= t('spare_part.descriptions')
           %th= t('spare_part.price')
+          
           %th Наличие
           %th=  t('spare_part.count')
           %th
@@ -23,7 +24,7 @@
         = render(cart.line_items)
         %tr.total_line 
           %td.total_title{colspan: "4"} Общяя сумма:
-          %td.total_cell
+          %td.total_cell{colspan: "2"} 
             = number_to_currency(cart.total_price, unit: "UA",   format:"%n %u")
 
     .cart_form 
