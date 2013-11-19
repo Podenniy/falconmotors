@@ -1,4 +1,5 @@
 class SparePartsController < InheritedResources::Base
+
   include ContentHelper
   before_action :menu
   before_action :cart
@@ -64,7 +65,7 @@ class SparePartsController < InheritedResources::Base
     def menu
       @category_menu = category_menu
     end
-   
+    
     def resource
       @resource ||= User.new
     end

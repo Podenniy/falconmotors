@@ -13,9 +13,14 @@ class ApplicationController < ActionController::Base
   
   protected
     def configure_permitted_parameters
-       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids)}
+       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:user_addres, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids)}
     end
   private
+    rescue_from CanCan::AccessDenied do |exception|
+        flash[:error] = exception.message
+        redirect_to store_url
+    end
+    
     def current_cart
       Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound

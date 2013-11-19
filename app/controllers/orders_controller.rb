@@ -1,7 +1,9 @@
 class OrdersController < InheritedResources::Base
+  load_and_authorize_resource
   before_action :menu
   before_action :cart
   before_action :search_parts
+ 
   respond_to :html, :json, :only => [:new, :index, :show, :edit, :destroy, :update]
 
   def index
@@ -57,7 +59,12 @@ class OrdersController < InheritedResources::Base
     def cart
       @cart = current_cart
     end
-
+    def find_o
+     @order =  Order.find(params[:id])
+    end
+    def find
+      @user = current_user
+    end
     def menu
       @category_menu = category_menu
     end
