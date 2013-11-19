@@ -1,5 +1,5 @@
 class OrdersController < InheritedResources::Base
-  load_and_authorize_resource
+  
   before_action :menu
   before_action :cart
   before_action :search_parts

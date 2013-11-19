@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def new
     
     @user = User.new
+
   end
 
   def edit
@@ -53,12 +54,12 @@ class UsersController < ApplicationController
     
     render 'choice_registration'
     
-
   end
   private
+
     def permitted_params
 
-      params.require(:user).permit(:user_addres, :order_id, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids)
+      params.require(:user).permit(:address, :order_id, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids) 
     end
 
 
