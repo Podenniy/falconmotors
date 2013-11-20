@@ -1,35 +1,38 @@
-<div class="registr_box">
-  <h2>Регистрация</h2>
+<div class="devise_wrap">
+
+  <div class="registr_box">
+    <h2>Регистрация</h2>
 
 
 
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
       
-    <div class="form-inputs">
-        <%= f.input :legal_entity, :as => :select, :collection =>[["Частное лицо", false],["Юредическое лицо", true]], :include_blank => false %>
-       <%= f.input :first_name , :autofocus => true %>
-       <%= f.input :last_name %>
-       <%= f.input :patronymic %>
-       <%= f.input :address %>
-       <%= f.input :user_organization %>
-       <%= f.input :user_telephon %>
-       <%= f.input :user_login %>
-       <%= f.input :email, :required => true %>
-       <%= f.input :password, :required => true %>
-       <%= f.input :password_confirmation, :required => true %>
+      <div class="form-inputs">
+         <%= f.input :legal_entity, :as => :select, :collection =>[["Частное лицо", false],["Юредическое лицо", true]], :include_blank => false %>
+        <%= f.input :first_name , :autofocus => true %>
+        <%= f.input :last_name %>
+        <%= f.input :patronymic %>
+        <%= f.input :address %>
+        <%= f.input :user_organization %>
+        <%= f.input :user_telephon %>
+        <%= f.input :user_login %>
+        <%= f.input :email, :required => true %>
+        <%= f.input :password, :required => true %>
+        <%= f.input :password_confirmation, :required => true %>
    
     
-    </div>
-   <div class="clear"></div>
-    <div class="form-actions">
-      <%= f.button :submit,"Зарегистрироваться", class: "btn btn-inverse" %>
-       <%= link_to "Войти ",  new_user_session_path, class: " vh btn btn-info" %>
-       <%= link_to " Вернуться обратно ",  store_url, class: "vr btn " %>
-    </div>
-    <div class="clear"></div>
-  <% end %>
+      </div>
+      <div class="clear"></div>
+      <div class="form-actions">
+        <%= f.button :submit,"Зарегистрироваться", class: "btn btn-inverse" %>
+         <%= link_to "Войти ",  new_user_session_path, class: " vh btn btn-info" %>
+         <%= link_to " Вернуться обратно ",  store_url, class: "vr btn " %>
+      </div>
+      <div class="clear"></div>
+    <% end %>
 
   
   
+  </div>
  </div>
