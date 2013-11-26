@@ -16,8 +16,13 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-    %link{href: "http://fonts.googleapis.com/css?family=Domine:400,700", rel: "stylesheet", type: "text/css"}/
     
+    :javascript
+      $(document).ready(function(){
+        $('.carousel').carousel( 'slide' ,{
+          interval: 2000
+        });
+      });
   %body
     .wrapper
       .header
@@ -42,7 +47,7 @@
                 %img{src: "/assets/flogo.png"}/
             .hd-right
              
-              .info_falcon
+              .info_flcn
                 %ul 
                   %li 
                     %span.cfr 
@@ -68,18 +73,20 @@
       .bg_ypon
       .index-cont
         .shad-l
-        =render "layouts/share/search_spare_auto" 
+        
+        =render "layouts/share/search_spare_article" 
         .shad-r  
         %div{style: "clear:both;"}
-        .store_index
+        .store_index{style: "#{"padding-top: 280px;" if current_page?(store_url)|| current_page?(user_url(@user))}"}
           .fone
             = image_tag("/assets/bg_index_f.png") 
-            /= image_tag("/assets/flcn_bg.png") 
-
+          -if current_page?(store_url)|| current_page?(user_url(@user))
+            #slider_box.carousel.slide
+              =render "layouts/share/for_slider_box.html.haml"
           .falcon_side
             =render "layouts/share/side_cont.html.haml"
             
-          .falcon_box 
+          .falcon_box{style: "#{"background: none;" if current_page?(store_url)}"}
             -if notice
               #notise_id
                 = bootstrap_flash
@@ -95,7 +102,6 @@
           %a{href: "http://falconmotors.az/"}
             %img{src: "http://falconmotors.az//css/images/bottom-logo.png"}/
         .footer-cent
-          © 2013 Falcon Motors                                Создание Веб-Сайта -
-          %a{href: "http://rahimoff.az"}
-            %img{src: "http://falconmotors.az//css/images/rahimoff.png"}/
+         
+          
     

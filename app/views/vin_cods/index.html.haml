@@ -1,0 +1,29 @@
+%h1 Listing vin_cods
+
+%table
+  %tr
+    %th Brend avto
+    %th Model
+    %th Year
+    %th Volume
+    %th Code
+    %th Parts list
+    %th
+    %th
+    %th
+
+  - @vin_cods.each do |vin_cod|
+    %tr
+      %td= vin_cod.brend_avto
+      %td= vin_cod.model
+      %td= vin_cod.year
+      %td= vin_cod.volume
+      %td= vin_cod.code
+      %td= vin_cod.parts_list
+      %td= link_to 'Show', vin_cod
+      %td= link_to 'Edit', edit_vin_cod_path(vin_cod)
+      %td= link_to 'Destroy', vin_cod, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Vin cod', new_vin_cod_path

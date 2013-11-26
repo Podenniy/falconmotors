@@ -1,0 +1,14 @@
+= simple_form_for(@vin_cod) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :brend_avto, collection: Car.all.pluck(:brend), class: "select_car"
+    
+    = f.input :model
+    = f.input :year, collection: 1983..2013
+    = f.input :volume
+    = f.input :code
+    = f.input :parts_list, as: :text, :input_html => { class: 'test', :cols => 300, :rows => 10 }
+  .clearfix
+  .form-actions
+    = f.submit "Оформить запрос", class: "btn btn-primary"

@@ -1,0 +1,25 @@
+Запрос по vin коду:
+= @vin_cod.code
+
+Марка авто:
+= @vin_cod.brend_avto
+
+Модель авто: #{@vin_cod.model}
+
+Год авто: #{@vin_cod.year}
+
+Дополнительная информация: 
+#{@vin_cod.parts_list}
+
+Клиент: #{" #{@vin_cod.user.last_name} "+"#{@vin_cod.user.first_name}" + " #{@vin_cod.user.patronymic}" }
+
+Email клиента: #{@vin_cod.user.email}
+
+ 
+телефон клиента: #{@vin_cod.user.user_telephon}
+
+
+
+
+ 
+ 

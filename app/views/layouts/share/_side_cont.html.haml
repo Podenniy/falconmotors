@@ -1,17 +1,32 @@
 - unless current_page?( new_user_registration_path)
   .side_for_user.well 
-    %ul 
-      %li 
-        %a{:href => "#"} 
-          О компании
-
-      %li 
+    %ul.store_menu 
+      
+      %li.user_log{class: "#{'active' if current_page?(user_url(@user))}"}
         =link_to "Личный кабинет", user_url(@user)
-      %li 
-        %a{:href => "#"} 
-          помощь
-      %li 
-        =link_to "На глвную", store_url
+        
+
+        -if user_signed_in?
+          .clear
+          %ul
+            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+              =link_to "Личные данные"
+              .clearfix
+            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+              =link_to "Мои заказы"
+              .clearfix
+            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+              =link_to "корзина", @cart, remote: true
+              .clearfix
+            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+              =link_to "Баланс"
+              .clearfix
+            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+              =link_to "Персональный счет"
+              .clearfix
+        .clearfix
+      
+       
     
     - unless user_signed_in? || current_page?(new_user_session_path)
 

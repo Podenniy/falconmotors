@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Brend avto:
+  = @vin_cod.brend_avto
+%p
+  %b Model:
+  = @vin_cod.model
+%p
+  %b Year:
+  = @vin_cod.year
+%p
+  %b Volume:
+  = @vin_cod.volume
+%p
+  %b Code:
+  = @vin_cod.code
+%p
+  %b Parts list:
+  = @vin_cod.parts_list
+
+= link_to 'Edit', edit_vin_cod_path(@vin_cod)
+\|
+= link_to 'Back', vin_cods_path

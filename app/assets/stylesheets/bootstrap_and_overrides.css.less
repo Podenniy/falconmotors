@@ -100,19 +100,44 @@ body{
   float:left;
   width: 175px;
    background: none;
+   box-shadow: none;
    border:none;
-  ul {
+  .store_menu {
     margin: 0 0 15px 0;
     padding: 0;
-    li {overflow: hidden; margin-bottom: 5px;
+    li { margin-bottom: 3px;
       a{font-family: Arial; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; float: left;  border-radius: 3px; background: none; color:#ffffff; height: 28px; line-height: 30px; text-decoration: none; padding: 0 9px;
         &:hover{
           background: #333; color:#f0f0f0; border-color:#333;
 
          }
         }
+      
+      
+    }
+    li.active{ 
+      a{ background: #333; color:#f0f0f0; border-color:#333; border:1px solid #707070;
+         -webkit-box-shadow: 0px 0px 50px 0px rgba(234,234,234,1);
+         -moz-box-shadow: 0px 0px 50px 0px rgba(234,234,234,1);
+         box-shadow: 0px 0px 50px 0px rgba(234,234,234,1);
+
+      }
+
+
+    }
+    li.user_log ul { margin: 5px 0 0 20px;
+      
+      li a{ box-shadow: none; background: none; border: none; font-size: 13px; height: 25px; line-height: 23px; font-weight:normal ; text-transform: capitalize;
+         &:hover{background: #333; color:#f0f0f0; border-color:#333;} 
+      }
+      li.active_us a{background: #333; color:#f0f0f0; border-color:#333; border:1px solid #707070;
+                 -webkit-box-shadow: 0px 0px 27px -3px rgba(234,234,234,1);
+                 -moz-box-shadow: 0px 0px 27px -3px rgba(234,234,234,1);
+                  box-shadow: 0px 0px 27px -3px rgba(234,234,234,1);
+      }
     }
   }
+ 
   .user_cab{
     border:1px solid #999;
     border-radius: 3px;
@@ -218,7 +243,8 @@ body{
 //// aplication layaot /// falcon-box
 
 .falcon_box{
-  background: url(/assets/ser_2.png);
+ 
+  background: url(/assets/bgser_3.png);
   position: relative;
  z-index: 2;
   border-radius :12px;

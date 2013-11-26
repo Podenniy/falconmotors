@@ -1,4 +1,5 @@
 class CartsController < InheritedResources::Base
+  before_filter :authenticate_user!
   before_action :cart
   before_action :menu
   before_action :sear

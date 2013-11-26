@@ -127,12 +127,11 @@ span.str{ display:block;  background: url("/assets/str3.png") no-repeat top left
    float:right;    
 }
 .hd-right span.str{position: static;}
-.hd-right .info_falcon{ position: absolute; right: 125px; margin-top: 13px;}
-.hd-right .info_falcon ul{
-  text-transform: uppercase; font-family: Arial; font-weight: bold; 
+.hd-right .info_flcn{ position: absolute; right: 125px; margin-top: 13px;}
+.hd-right .info_flcn ul{
+  text-transform: uppercase; font-family: Arial; font-weight: bold; color:#FFF;
 }
-
-.hd-right .info_falcon ul a{background:#Ca2d38; text-decoration: none; color:#fff; }
+.info_flcn ul li span{  color:#fff; font-size: 14px; }
 
 
 .lang

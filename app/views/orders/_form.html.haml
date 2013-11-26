@@ -41,5 +41,5 @@
             %td{colspan:"2"} 
               =@cart.total_price
     .form-actions#bg_ser
-      = f.submit " Заказать", class: "btn btn-primary"
+      = f.submit " Отправить запрос", class: "btn btn-primary"
   = button_to 'Изменить содержимое корзины заказ', @cart, method: :get , :class => 'btn btn-danger btn_nor ', :id => 'bt_nor',remote: true

@@ -6,5 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(:legal_entity => true)
-User.create(:legal_entity => false)
+Car.create(:brend => "Suzuki")
+Car.create(:brend => "Subaru")
+Car.create(:brend => "Toyota")
+Car.create(:brend => "Lexus")
+Car.create(:brend => "Infiniti")
+Car.create(:brend => "Isuzu")
+Car.create(:brend => "Nissan")
+Car.create(:brend => "Mitsubishi")
+Car.create(:brend => "Mazda")
+Car.create(:brend => "Acura")
+Car.create(:brend => "Honda")
+Car.create(:brend => "Hyundai")
+Car.create(:brend => "Kia")
+Car.create(:brend => "Daewoo")
+Car.create(:brend => "Ssangyong")
+
+
+
+

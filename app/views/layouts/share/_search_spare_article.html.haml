@@ -1,0 +1,38 @@
+.wrap_search_articles{style:"#{"z-index: 0;" if current_page?(new_user_registration_path)}"}
+
+  #menu_store
+    %ul 
+      %li{class: "#{'active' if current_page?(store_url)}"} 
+        =link_to "Главная", store_url
+      -if user_signed_in?
+        %li{class: "#{'active' if current_page?(new_vin_cod_path)}"} 
+          =link_to "Запрос по VIN", new_vin_cod_path
+      -else
+        %li
+          =link_to "Запрос по VIN" ,  new_user_session_path
+      %li{class: "#{'active' if current_page?(store_cooperation_url)}"}  
+        =link_to "Доставка и оплата",  store_cooperation_url 
+      %li{class: "#{'active' if current_page?(store_cooperation_url)}"} 
+        =link_to "Сотрудничество", store_cooperation_url 
+      %li{class: "#{'active' if current_page?( store_useful_info_url)}"}  
+        =link_to "Полезная информация",  store_useful_info_url  
+      %li{class: "#{'active' if current_page?(store_contact_url)}"} 
+        =link_to "контакты", store_contact_url 
+      
+  
+  #spares_search
+    = search_form_for @search_spares, url: search_spare_parts_path, html: {class: "form-search",  method: :post } do |f|
+      .field
+        //= f.label :title_cont
+        = f.text_field :title_cont, :placeholder => "Ваш Артикул", class: "input-medium search-query"
+      .form-actions
+        = f.submit "поиск", class: "btn  btn-inverse"
+    .usr_cart
+      =link_to "корзина", @cart
+      %span
+        
+      .reg_log
+       
+    .clear 
+      
+    

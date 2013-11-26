@@ -1,4 +1,6 @@
 Falconmotors::Application.routes.draw do
+  resources :vin_cods
+
   resources :categories
 
   devise_for :users, controllers: {
@@ -28,6 +30,9 @@ Falconmotors::Application.routes.draw do
   resources :carts
 
   get "store/index"
+  get "store/cooperation"
+  get "store/contact"
+  get "store/useful_info"
   resources :spare_parts do
     get :who_bought, on: :member
     get :quantity_spare, on: :member

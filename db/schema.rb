@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119232228) do
+ActiveRecord::Schema.define(version: 20131126115925) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20131119232228) do
   create_table "brends_suppliers", force: true do |t|
     t.integer "brend_id"
     t.integer "supplier_id"
+  end
+
+  create_table "cars", force: true do |t|
+    t.string   "brend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "carts", force: true do |t|
@@ -138,6 +144,7 @@ ActiveRecord::Schema.define(version: 20131119232228) do
     t.integer  "order_id"
     t.string   "address"
     t.string   "string"
+    t.string   "city"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -152,5 +159,17 @@ ActiveRecord::Schema.define(version: 20131119232228) do
 
   add_index "users_roles", ["role_id"], name: "index_users_roles_on_role_id", using: :btree
   add_index "users_roles", ["user_id"], name: "index_users_roles_on_user_id", using: :btree
+
+  create_table "vin_cods", force: true do |t|
+    t.string   "brend_avto"
+    t.string   "model"
+    t.string   "year"
+    t.string   "volume"
+    t.string   "code"
+    t.text     "parts_list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
 end

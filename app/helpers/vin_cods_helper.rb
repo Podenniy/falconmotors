@@ -1,0 +1,2 @@
+module VinCodsHelper
+end

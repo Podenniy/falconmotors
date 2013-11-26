@@ -1,4 +1,4 @@
-%h3 Личный кабинет
+%h3 Авторизация
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   .form-inputs
     = f.input :user_login, :required => false,label: false, :autofocus => true, class: ""
