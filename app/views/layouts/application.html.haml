@@ -77,10 +77,10 @@
         =render "layouts/share/search_spare_article" 
         .shad-r  
         %div{style: "clear:both;"}
-        .store_index{style: "#{"padding-top: 280px;" if current_page?(store_url)|| current_page?(user_url(@user))}"}
+        .store_index{style: "#{"padding-top: 280px;" if current_page?(store_url)}"}
           .fone
-            = image_tag("/assets/bg_index_f.png") 
-          -if current_page?(store_url)|| current_page?(user_url(@user))
+            .img_fon 
+          -if current_page?(store_url)
             #slider_box.carousel.slide
               =render "layouts/share/for_slider_box.html.haml"
           .falcon_side

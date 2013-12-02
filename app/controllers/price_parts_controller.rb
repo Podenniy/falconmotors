@@ -1,16 +1,15 @@
 class PricePartsController < InheritedResources::Base
-  before_action :menu
+  load_and_authorize_resource :only => [:index, :show]
   before_action :cart
   before_action :search_parts
-  before_action :resource
+  before_action :user_resource
   before_action :cur_user
-  private
-    def permitted_params
-        params.permit(:price_part => [:price, :quantity, :delivery, :supplier_id , :spare_part_id] )
-    end
+  
 
-    def part_params
-      params.require(:price_part).permit(:price, :quantity, :delivery, :supplier_id , :spare_part_id)
+  private
+
+    def permitted_params
+      params.permit(:price_part => [:price, :quantity, :delivery, :supplier_id , :spare_part_id])   
     end
 
     def search_parts
@@ -21,13 +20,13 @@ class PricePartsController < InheritedResources::Base
     def cart
       @cart = current_cart
     end
-    def us
+    def user_resource
       @resource ||= User.new
     end
     def cur_user
       @user = current_user
     end
-    def menu
-      @category_menu = category_menu
+    def set_price
+      @price_part = PricePart.find(params[:id])
     end
 end

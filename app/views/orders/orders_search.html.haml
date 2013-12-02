@@ -1,0 +1,72 @@
+.user_orders
+  #search_order 
+    -
+    /= search_form_for @search_orders,:builder => SimpleForm::FormBuilder, url: orders_search_orders_path, html: {class: "form-search",  method: :post } do |f|
+    / %table.table.table-bordered
+    /    %tr 
+    /      %th 
+    /        Дата
+    /      %th 
+    /        Заказ
+    /      %th
+    /        Фирма
+    /      %th 
+    /        Артикул
+    /      %th 
+    /        Описание
+    /      %th 
+    /        Кол
+    /      %th
+    /        Цена
+    /      %th
+    /        Сумма 
+    /      %th 
+    /        Оплата
+    /      %th 
+    /        Статус
+    /      %th 
+    /      %th
+    /    %tr 
+    /      %td 
+    /      %td 
+    /        
+    /        //= f.label :title_cont
+    /        = f.input :id_eq, label: false
+    /      %td
+    /
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td 
+    /      %td
+    /    %tr#t_2
+    /      %td{colspan: "12", class:"ord"}
+    /        %table.table
+    /          - @orders.each do |ord|
+    /            %tr#t_3
+    /              %td
+    /                = ord.created_at.to_date
+    /              %td
+    /                = ord.id 
+    /              %td{colspan: "10", class:"ord_2"}
+    /                %table.table 
+    /                  - ord.line_items.each do | line |
+    /                    %tr
+    /                      %td
+    /                        =line.price_part.spare_part.brend.title
+    /                      %td
+    /                        =line.price_part.spare_part.descriptions
+    /                      %td
+    /                        =line.quantity
+    /                      %td
+    /                        =line.price_part.price
+    /                      %td
+    /                        =line.total_price
+
+    /  .form-actions
+    /    = f.submit "поиск", class: "btn  btn-inverse"
+

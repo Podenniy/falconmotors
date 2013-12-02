@@ -1,26 +1,49 @@
-%h1 Listing orders
+#search_order 
 
-%table
-  %tr
-    %th Name
-    %th Address
-    %th Email
-    %th Pay type
-    %th Delivery method
-    %th
-    %th
-    %th
-
-  - @orders.each do |order|
-    %tr
-      %td= order.name
-      %td= order.address
-      %td= order.email
-      %td= order.pyment_type.name
-      %td= order.delivery_method.name
-      %td= link_to 'Show', order
-      %td= link_to 'Edit', edit_order_path(order)
-      %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %table.table.table-bordered
+    %tr 
+      %th 
+        Дата
+      %th 
+        Заказ
+        %br/ 
+        (номер)
+      %th
+        Фирма
+      %th 
+        Артикул
+      %th 
+        Описание
+      %th 
+        Кол
+      %th
+        Цена
+      %th
+        Сумма 
+      %th 
+        Оплата
+      %th 
+        Статус
+      %th 
+      %th
+    
+    - @orders.each do |order|
+      %tr.t_2
+        %td= order.created_at.to_date
+        %td= order.id
+        %td{colspan: "12", class: "ord"}
+          %table
+            - order.line_items.each do |line|
+              %tr 
+                %td.b_n 
+                  = line.price_part.spare_part.brend.title
+                %td 
+                  = line.price_part.spare_part.title
+                %td 
+                  = line.price_part.spare_part.descriptions
+        %td 
+        %td
+        
 
 %br
 

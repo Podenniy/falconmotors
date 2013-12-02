@@ -3,7 +3,7 @@ module ContentHelper
     :user
   end
 
-  def resource
+  def user_resource
     @resource ||= User.new
   end
 

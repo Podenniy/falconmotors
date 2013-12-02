@@ -4,12 +4,27 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-     # @user =  user ||= User.new # guest user (not logged in)
+      @user =  user ||= User.new # guest user (not logged in)
      # @user.roles.each { |role| send(role.name.downcase) }
-#
-     #  if @user.roles.size == 0
-     #    can [:read], :all #for guest without roles
-     #  end
+       alias_action :create, :read, :update, :destroy, :to => :crud
+       if @user.roles.size == 0 and @user.has_role? :private_person and @user.has_role? :legal_entity
+         cannot :crud, Brend , Category, LineItem #for guest without roles
+
+       end
+       
+
+       if @user.has_role? :admin
+         can :manage, :all
+       end
+
+       if @user.has_role? :private_person and @user.has_role? :legal_entity
+
+       end
+     #if @user.has_role? :admin
+     #  can :manage, :all
+     #else
+     # can :read, :all
+     #end
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

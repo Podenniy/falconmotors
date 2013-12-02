@@ -37,7 +37,7 @@ ru:
         first_name: "Имя"
         last_name: "Фамилия"
         patronymic: "Отчество"
-        user_organization: "Название организации"
+        user_organization: "организация"
         user_telephon: "Моб-тлефон"
         user_login: "Ваш логин"
         email: "Эллектронный адрес"

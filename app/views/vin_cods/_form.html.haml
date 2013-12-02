@@ -1,7 +1,7 @@
 = simple_form_for(@vin_cod) do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs.well
     = f.input :brend_avto, collection: Car.all.pluck(:brend), class: "select_car"
     
     = f.input :model

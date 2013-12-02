@@ -1,29 +1,28 @@
 class BrendsController < InheritedResources::Base
+  load_and_authorize_resource
   before_action :cart
   before_action :menu
   before_action :sear
-  before_action :find, :only => [ :update, :destroy, :show, :edit]         
-  before_action :resource
+  before_action :set_brend, only: [:show, :edit, :update, :destroy]      
+  respond_to :html, :json
+  
   
   
   private
+  
     def permitted_params
-        params.permit(:brend => [:title, :descriptions, :image, :image_cache, :quantity, :price, :photos, :add_quantity , :parent_id, :supplier_id, :spare_part_id] )
+      params.permit(:brend => [:title, :description, :image, :image_cache, :quantity, :price, :photos, :add_quantity , :parent_id, :supplier_id, :spare_part_id])   
     end
 
-    def part_params
-      params.require(:brend).permit(:title, :descriptions, :image, :image_cache, :quantity, :price, :photos, :add_quantity, :parent_id, :supplier_id, :spare_part_id)
+    def sear
+     @search = search_parts
     end
-
-     def sear
-      @search = search_parts
-     end
 
     def cart
       @cart = current_cart
     end
 
-    def find
+    def set_brend
        @brend = Brend.find(params[:id])
     end
 
@@ -31,7 +30,7 @@ class BrendsController < InheritedResources::Base
       @category_menu = category_menu
     end
 
-    def resource
+    def user_resource
       @resource ||= User.new
     end
 end

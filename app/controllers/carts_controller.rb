@@ -1,7 +1,6 @@
 class CartsController < InheritedResources::Base
   before_filter :authenticate_user!
   before_action :cart
-  before_action :menu
   before_action :sear
   respond_to :html, :json
 
@@ -29,10 +28,9 @@ class CartsController < InheritedResources::Base
   end
 
   private
-    def menu
-      @category_menu = category_menu
-    end
-
+   def permitted_params
+     params.permit(:cart => [])   
+   end
     def cart
       @cart = current_cart
     end
@@ -41,7 +39,5 @@ class CartsController < InheritedResources::Base
       @search = search_parts
     end
     
-    def cart_params
-      params[:cart]
-    end
+    
 end

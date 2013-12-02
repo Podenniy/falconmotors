@@ -1,9 +1,0 @@
-- Role.all.each do |i| 
-  -unless Role.all[0] == i
-    -if i.name == "Частное лицо"
-      
-      = link_to i.name , new_registration_path(resource.roles << Role.where(name: i.name))
-    -else
-      = link_to i.name, store_url
-
-	

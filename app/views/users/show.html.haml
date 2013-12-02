@@ -1,3 +1,35 @@
-#user_page
-  %strong 
-    = @user.email
+#user_data
+  .user_inf.well 
+    %h3 
+      Регистрационные данные
+    %ul
+      %li 
+        #{"Логин .................. " + @user.user_login  }
+
+      %li 
+        Пароль .................  
+        = link_to "Изменить логин или пароль", edit_user_registration_path 
+  .user_inf.well.m_r 
+    %h3 
+      Персональные данные
+    %ul 
+      %li 
+        #{"Контактное лицо, Ф.И.О .... " + " #{@user.last_name} "+"#{@user.first_name} " + "#{@user.patronymic}" }
+      %li
+        #{"Email ................................ " + @user.email}
+      %li
+        #{"Мобильный телефон ........ +80"+ @user.user_telephon.to_s}
+      %li
+        #{"Адрес ................................ "+ @user.address}
+     
+      %li
+        %span.zgl 
+          Вид сотрудничества
+        -if @user.legal_entity?
+          %span  
+            #{"..... Юридическое лицо"}
+        -else
+          %span
+            #{"..... Частное лицо"}
+      %li
+        =link_to "Редактировать данные"

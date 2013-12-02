@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :user_cur
   before_action :search_parts
   before_action :cart
 
@@ -11,10 +11,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
-    
+  def new 
     @user = User.new
-
   end
 
   def edit
@@ -23,12 +21,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-
     if @user.save
+      
       redirect_to @user, :flash => { :success => 'User was successfully created.' }
     else
       render :action => 'new'
     end
+    
   end
 
   def update
@@ -48,27 +47,33 @@ class UsersController < ApplicationController
     redirect_to users_path, :flash => { :success => 'User was successfully deleted.' }
   end
 
- 
-  
-  def choice_registration
+  def orders_us
+    @user.orders = @us_orders
+    @us_orders_search =  @us_orders.search(params[:q])
+    @spare_parts = @search_spares.result(distinct: true)
     
-    render 'choice_registration'
+  end
+  
+  def personal_data
+    
+    render 'personal_data'
     
   end
   private
 
     def permitted_params
-
-      params.require(:user).permit(:address, :order_id, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email, :password, :password_confirmation, :remember_me, :role_ids) 
+      params.permit(:user => [:city, :address, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email,  :password, :password_confirmation, :remember_me, :role_ids]) 
     end
 
+    def user_cur
+      @user = current_user
+    end
+    def search_parts
+      @search_spares = SparePart.search(params[:q])
+      @spare_parts = @search_spares.result(distinct: true)
+    end
 
-   def search_parts
-       @search_spares = SparePart.search(params[:q])
-       @spare_parts = @search_spares.result(distinct: true)
-   end
-
-   def cart
+    def cart
       @cart = current_cart
-  end
+    end
 end

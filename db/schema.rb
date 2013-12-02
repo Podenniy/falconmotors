@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126115925) do
+ActiveRecord::Schema.define(version: 20131202123356) do
 
   create_table "brends", force: true do |t|
     t.string   "title"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20131126115925) do
     t.datetime "updated_at"
     t.integer  "pyment_type_id"
     t.integer  "delivery_method_id"
+    t.integer  "user_id"
   end
 
   create_table "price_parts", force: true do |t|

@@ -1,6 +1,5 @@
 class StoreController < ApplicationController
   before_action :cart
-  before_action :menu
   before_action :user_f
   before_action :search_parts
   def index
@@ -26,16 +25,13 @@ class StoreController < ApplicationController
    def user_f
      @user = current_user
    end
-   def menu
-     @category_menu = category_menu
-   end
+   
    def cart
       @cart = current_cart
-  end
+   end
 
-  def search_parts
+   def search_parts
       @search_spares = SparePart.search(params[:q])
       @spare_parts = @search_spares.result(distinct: true)
-
-  end
+   end
 end

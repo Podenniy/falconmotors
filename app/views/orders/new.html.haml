@@ -3,7 +3,7 @@
   .user_ord
     -if @user.legal_entity == true
       %p 
-        = @user_organization
+        = @user.user_organization
     %p  
       %strong Контактное лицо ФИО:  ...........
       = @user.first_name 

@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :users_roles
   has_many :orders
   has_many :vin_cods
-  validates :first_name, :last_name, :email, :patronymic, :user_telephon, :user_login,
+
+  after_create :usr_role
+
+  validates :first_name, :last_name, :email, :city,:patronymic, :user_telephon, :user_login,
             :presence => true
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -11,5 +14,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+ def usr_role
+  rol_f = Role.where(name:"private_person")
+  rol_t = Role.where(name:"legal_entity")
+  if self.legal_entity == true
+    self.roles << rol_t
+  else
+    self.roles << rol_f
+  end
+ end
  
+ def has_role?(role_sym)
+  roles.any? { |r| r.name.underscore.to_sym == role_sym }
+ end
 end

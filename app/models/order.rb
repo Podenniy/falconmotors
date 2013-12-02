@@ -16,5 +16,6 @@ class Order < ActiveRecord::Base
  def user_ord(user)
  	self.name = user.first_name
  	self.email = user.email
+ 	self.user_id = user.id
  end
 end
