@@ -1,3 +1,1 @@
-=line_item.price_part.quantity
-=line_item.price_part.quantity
-=line_item.price_part.spare_part.title
+= sprintf("%2d x %s %s %s", line_item.quantity, line_item.price_part.spare_part.brend.title, line_item.price_part.spare_part.title,  "цена" + " #{line_item.total_price.to_s}" + "грн" )

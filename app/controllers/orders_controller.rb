@@ -36,6 +36,7 @@ class OrdersController < InheritedResources::Base
     @order = Order.new(permitted_params)
     @order.add_line_items_from_cart(current_cart)
     @order.user_ord(@user)
+    @total = current_cart.total_price
     create! do |format|
       if@order.save
         

@@ -18,4 +18,8 @@ class Order < ActiveRecord::Base
  	self.email = user.email
  	self.user_id = user.id
  end
+
+ def total_summ
+ 	line_items.to_a.sum { |item| item.total_price}
+ end
 end
