@@ -9,14 +9,14 @@ Falconmotors::Application.routes.draw do
     passwords: "users/passwords", 
     
    }
-  #devise_scope :user do
-  #  match 'users/' => 'users/registrations#edit_personal_data', via: [:get, :put], as: :edit_personal_data
-  #end
+  devise_scope :user do
+    match 'users/' => 'users/registrations#edit_personal_data', via: [:get], as: :edit_personal_data
+  end
   resources :users do
     
-   collection do
-      match 'edit_personal_data' => 'users/registrations#edit_personal_data', via: [:get, :put], as: :edit_personal_data
-    end
+   #collection do
+   #   match 'edit_personal_data' => 'users/registrations#edit_personal_data', via: [:get, :put], as: :edit_personal_data
+   # end
   end
   
   resources :price_parts

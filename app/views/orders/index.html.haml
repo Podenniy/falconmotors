@@ -2,17 +2,17 @@
 
   %table.table.table-bordered
     %tr 
-      %th 
+      %th.dt
         Дата
-      %th 
+      %th.dt
         Заказ
         %br/ 
         (номер)
-      %th
+      %th.sxl_1
         Фирма
-      %th 
+      %th.sxl_1 
         Артикул
-      %th 
+      %th.sxxx_1
         Описание
       %th 
         Кол
@@ -24,25 +24,31 @@
         Оплата
       %th 
         Статус
-      %th 
-      %th
+      
     
     - @orders.each do |order|
       %tr.t_2
-        %td= order.created_at.to_date
-        %td= order.id
-        %td{colspan: "12", class: "ord"}
+        %td.md.dt_2
+          = order.created_at.to_date
+        %td.md
+          = order.id
+        %td{colspan: "8", class: "ord"}
           %table
             - order.line_items.each do |line|
               %tr 
-                %td.b_n 
+                %td.b_n.sxl 
                   = line.price_part.spare_part.brend.title
-                %td 
+                %td.sxl 
                   = line.price_part.spare_part.title
-                %td 
+                %td.sxxx
                   = line.price_part.spare_part.descriptions
-        %td 
-        %td
+                %td.cl
+                  = line.quantity
+                %td 
+                  = line.price 
+                %td 
+                  = line.total_price
+        
         
 
 %br
