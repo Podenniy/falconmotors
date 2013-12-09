@@ -1,6 +1,9 @@
 <div class="registr_box">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+  <%-unless params[:action] == "edit_personal_data" %>
+    <h2> Изменить логин или пароль</h2>
+  <%else%>
+   <h2> Изменить регистрационные данные </h2>
+  <%end%>
   <%= simple_form_for(current_user, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= f.error_notification %>
 
@@ -15,7 +18,10 @@
         <%= f.input :city %>
         <%= f.input :address %>
         <%= f.input :user_organization %>
+        <div class="u_tel">
         <%= f.input :user_telephon %>
+        <span class="tel_n">+80</span>
+       </div> 
         <%= f.input :user_login, :required => true, :autofocus => true %>
       <%- else %>
         <%= f.input :user_login, :required => true, :autofocus => true %>
@@ -23,21 +29,21 @@
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
 
-        <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+        <%= f.input :password, :autocomplete => "off", :hint => "Введите новый пароль", :required => false %>
         <%= f.input :password_confirmation, :required => false %>
     
       <% end %>
-      <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+      <%= f.input :current_password, :hint => "Введите текущий пароль", :required => true %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update" %>
+      <%= f.button :submit, "Обновить" %>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3>Удалить всю учетную запись</h3>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+  <p>Unhappy? <%= link_to "Удаление учетной записи", registration_path(resource_name), :data => { :confirm => "Точно удалить" }, :method => :delete %></p>
 
-  <%= link_to "Back", :back %>
+ 
 </div>

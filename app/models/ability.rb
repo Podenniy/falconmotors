@@ -9,7 +9,7 @@ class Ability
        alias_action :create, :read, :update, :destroy, :to => :crud
        if @user.roles.size == 0 and @user.has_role? :private_person and @user.has_role? :legal_entity
          cannot :crud, Brend , Category, LineItem #for guest without roles
-
+         cannot :destroy, Cart
        end
        
 

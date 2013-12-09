@@ -1,10 +1,12 @@
-if ($('.falcon_form ,.info_block')) {
-   $('.falcon_form, .info_block').hide();
+if ($('.falcon_form ,.info_block, #search_order, #user_data, .contact_box, .falcon_form_all')) {
+
+   $('.falcon_form, .info_block, #search_order, #user_data, .contact_box, .falcon_form_all').hide();
    $('#cart_wrap').html("<%=j render @cart %>");
    $('#cart_id').show('slide', 1000);
+   
+   
   }else{
    
    $('.store_index #cart_wrap ').html("<%=j render @cart %>");
   
   }
-

@@ -23,8 +23,15 @@
 
 	h2{   border-bottom: 8px solid #ca2d38; text-align: center; color:#F0F0f0; margin: 0; padding: 0; font-size: 24px; border-radius: 12px 12px 16px 16px; border-left:8px solid #333; border-right: 8px solid #333;}
     form{overflow: hidden; padding:20px 15px 0 15px ; 
-         input{ border:1px solid #666; border-radius: 6px;}
-      .input{overflow: hidden;
+      .u_tel{ position: relative; font-size: 14px;
+        span.tel_n{position: absolute; top:6px; left:45%;  font-weight: bold;}
+        input{padding-left: 30px !important; width: 180px}
+
+      }
+      .tel_n{position: absolute; top:0;}
+      input{ border:1px solid #666; border-radius: 6px; margin:0;}
+      .input{overflow: hidden; margin-bottom: 10px; 
+        .hint{display: block; text-align: left !important; color:red;}
       	#user_legal_entity{margin: 0; padding: 0; height: 28px !important; outline: none;}
         label{
         	float: left;

@@ -38,8 +38,14 @@
                   %span.in_2
                     автозапчастей
                     %br/ 
-              %span.slog 
-               
+              
+              .social
+                .soc-item{onclick: "window.open('https://facebook.com')"}
+                  %img{src: "/assets/fb.png"}/
+                  На Фейсбуке
+                .soc-item{onclick: "window.open('https://twitter.com')"}
+                  %img{src: "/assets/twt.png"}/
+                  На Твиттере
               
                 
             .logo
@@ -48,26 +54,23 @@
             .hd-right
              
               .info_flcn
+                .lgin_head
+                  = link_to "Зарегистрироваться",new_registration_path(resource_name)    
+                  |
+                  = link_to "Войти",new_user_session_path
                 %ul 
-                  %li 
+                  %li.g_tel 
                     %span.cfr 
-                      &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot; &middot;&nbsp;&nbsp;&nbsp;(0432) 61-23-48
-                  %li 
+                      (0432) 61-23-48
+                  %li.m_tel
                     %span.cfr  
-                      &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot;  &middot;  &middot;  &middot; &middot;  &middot; &middot;  &middot;&nbsp;&nbsp;&nbsp;(+380) 9345678
-                  %li 
-                    Email . . . . .
-                    %span.mail_f 
-                      falcon.vinnica@gmail.com
+                      (+380) 9345678
+                  %li.email_b
                     
-
-                .social
-                  .soc-item{onclick: "window.open('https://facebook.com')"}
-                    %img{src: "/assets/fb.png"}/
-                    На Фейсбуке
-                  .soc-item{onclick: "window.open('https://twitter.com')"}
-                    %img{src: "/assets/twt.png"}/
-                    На Твиттере
+                    %span 
+                      falcon.vinnica@gmail.com
+                
+                
             .clear  
       .grad
       .bg_ypon

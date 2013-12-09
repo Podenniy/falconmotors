@@ -45,6 +45,8 @@ ru:
         password_confirmation: "Подтвердите пароль"
         address: "Ваш адресс"
         city: "Город"
+        
+        current_password: "Текущий пароль"
       order:
         pyment_type: "Метод оплаты"
         delivery_method: "Способ доставки"

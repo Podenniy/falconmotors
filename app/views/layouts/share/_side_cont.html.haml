@@ -1,29 +1,29 @@
 - unless current_page?( new_user_registration_path)
   .side_for_user.well 
-    %ul.store_menu 
-      
-      %li.user_log
+    .store_menu 
+      %h3 
         Личный кабинет
+      
         
 
-        -if user_signed_in?
-          .clear
-          %ul
-            %li{class: "#{'active_us' if current_page?(user_url(current_user))}"} 
-              =link_to "Личные данные ", user_url(current_user)
-              .clearfix
-            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
-              =link_to "Мои заказы", orders_path
-              .clearfix
-            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
-              =link_to "корзина", @cart, remote: true
-              .clearfix
-            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
-              =link_to "Баланс"
-              .clearfix
-            %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
-              =link_to "Персональный счет"
-              .clearfix
+      -if user_signed_in?
+          
+        %ul
+          %li{class: "#{'active_us' if current_page?(user_url(current_user))}"} 
+            =link_to "Личные данные ", user_url(current_user)
+            .clearfix
+          %li{class: "#{'active_us' if current_page?(orders_path)}"} 
+            =link_to "Мои заказы", orders_path
+            .clearfix
+          %li{class: "#{'active_us' if current_page?(cart_path(@cart))}"} 
+            =link_to "корзина", @cart, remote: true
+            .clearfix
+          %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+            =link_to "Баланс"
+            .clearfix
+          %li{class: "#{'active_us' if current_page?(cart_url(@cart))}"} 
+            =link_to "Персональный счет"
+            .clearfix
         .clearfix
       
        

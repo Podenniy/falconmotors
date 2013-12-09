@@ -123,17 +123,24 @@ span.str{ display:block;  background: url("/assets/str3.png") no-repeat top left
 .hd-right span.str{margin-top: 15px; float: left;}
 
 .hd-right
-{ overflow: hidden;
+{ 
    float:right;    
 }
 .hd-right span.str{position: static;}
-.hd-right .info_flcn{ position: absolute; right: 125px; margin-top: 13px;}
+.hd-right { position: absolute; right: 125px; margin-top: 13px;}
 .hd-right .info_flcn ul{
-  text-transform: uppercase; font-family: Arial; font-weight: bold; color:#FFF;
+  float:left;text-transform: uppercase; font-family: Arial; font-weight: bold; color:#FFF;
 }
 .info_flcn ul li span{  color:#fff; font-size: 14px; }
-
-
+.info_flcn .g_tel { background: url("/assets/tel_d.png") no-repeat 0 1px; }
+.info_flcn{overflow: hidden; left: 20px; width: 460px;  border-radius: 6px;  position: absolute; padding-top: 10px; }
+.info_flcn .m_tel { background: url("/assets/mobil_tel.png") no-repeat 8px 1px;}
+.info_flcn ul li {margin-bottom: 12px; line-height: 20px; padding: 0 0 0 35px;}
+.info_flcn .email_b { font-size: 12px; background: url("/assets/email_k.png") no-repeat 2px 1px; }
+.info_flcn .email_b span{ font-size: 11px; line-height: 28px;}
+.info_flcn ul{margin-bottom: 0;}
+.info_flcn .lgin_head{color:#f0f0f0; float:left; padding: 30px 0 0 0;}
+.info_flcn .lgin_head a{ font-weight: bold; color:#f0f0f0; font-size: 11px; text-transform: uppercase;}
 .lang
 {
   margin:40px 0 0 0;
@@ -180,8 +187,9 @@ span.str{ display:block;  background: url("/assets/str3.png") no-repeat top left
 {
    
    width:280px;  
-   margin:0 0 0 20px; 
+   margin:100px 0 0 20px; 
    color: #9b9b9b;
+   padding: 0 0 0 70px;
    font:normal 14px Georgia;
 }
 

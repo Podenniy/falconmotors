@@ -28,7 +28,7 @@
       .form-actions
         = f.submit "поиск", class: "btn  btn-inverse"
     .usr_cart
-      =link_to "корзина", @cart
+      =link_to "корзина", @cart, remote: true
       %span
         
       .reg_log

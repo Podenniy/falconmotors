@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :email, :city,:patronymic, :user_telephon, :user_login,
             :presence => true
+  validates_format_of :user_telephon, :with => /([0-9]{1,})/
+  validates_length_of :user_telephon, :minimum => 9, :maximum => 9
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

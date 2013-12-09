@@ -6,7 +6,7 @@ class OrdersController < InheritedResources::Base
 
   def index
     @user = current_user
-    @orders = Order.all.where(user_id:@user.id).paginate page: params[:page], order: 'created_at desc', per_page: 10
+    @orders = Order.all.load.where(user_id:@user.id).paginate page: params[:page], order: 'created_at desc', per_page: 10
 
     index!
   end
@@ -36,7 +36,7 @@ class OrdersController < InheritedResources::Base
     @order = Order.new(permitted_params)
     @order.add_line_items_from_cart(current_cart)
     @order.user_ord(@user)
-    @total = current_cart.total_price
+    
     create! do |format|
       if@order.save
         
