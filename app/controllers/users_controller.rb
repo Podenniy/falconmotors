@@ -11,23 +11,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new 
+  def new
     @user = User.new
   end
 
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def create
     @user = User.new(params[:user])
     if @user.save
-      
+
       redirect_to @user, :flash => { :success => 'User was successfully created.' }
     else
       render :action => 'new'
     end
-    
+
   end
 
   def update
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -51,18 +51,18 @@ class UsersController < ApplicationController
     @user.orders = @us_orders
     @us_orders_search =  @us_orders.search(params[:q])
     @spare_parts = @search_spares.result(distinct: true)
-    
+
   end
-  
+
   def personal_data
-    
+
     render 'personal_data'
-    
+
   end
   private
 
     def permitted_params
-      params.permit(:user => [:city, :address, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email,  :password, :password_confirmation, :remember_me, :role_ids]) 
+      params.permit(:user => [:city, :address, :first_name, :last_name, :patronymic, :user_telephon, :user_login ,:user_organization, :legal_entity, :email,  :password, :password_confirmation, :remember_me, :role_ids, :dicount_rate])
     end
 
     def user_cur

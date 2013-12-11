@@ -22,6 +22,7 @@
 #Car.create(:brend => "Daewoo")
 #Car.create(:brend => "Ssangyong")
 
-Role.create(:name => "private_person")
-Role.create(:name => "legal_entity")
+#Role.create(:name => "private_person")
+#Role.create(:name => "legal_entity")
+Role.create(:name => "Discount_cost")
 

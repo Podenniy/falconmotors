@@ -1,5 +1,5 @@
 .info_search
-  %h2 
+  %h2
     Ваш результат поиска
 
 .accordion#accordion2.search_table1
@@ -16,14 +16,15 @@
           =  t('spare_part.count')
         %th.spare_price_title
           = t('spare_part.price')
+
         %th.spare_delivery_title
-          %small 
+          %small
             колл дней доставки
         %th.spare_cart_title
-          
+
     %tbody
       %tr
-        %td{colspan: "7"} 
+        %td{colspan: "7"}
           .accordion-group
             .accordion-heading
               %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
@@ -36,7 +37,7 @@
                     %tr.viev_art.info
                       %td.part_view
                         = image_tag(spare_part.brend.image)
-                        %strong 
+                        %strong
                           = spare_part.brend.title
                           = spare_part.title
                       %td.part_view_desc
@@ -48,13 +49,20 @@
                           -spare_part.price_parts.each do |price|
                             %tr.info
                               %td
-                                = price.quantity 
+                                = price.quantity
                                 шт
                               %td
-                                = number_to_currency(price.price, unit: "грн", format: "%n %u")
-                                 
+                                -if current_user.discount_rate?
+                                  - desc = price.price.to_i -  price.price.to_i* current_user.discount_rate
+                                  %a{:href => "#",  :rel => "tooltip",  :title=> "#{"Ваша цена "+"#{number_to_currency(desc.to_i, unit: "грн", format: "%n %u")}"}","data-placement" => "right"}
+
+                                    =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                                -else
+                                  %a{:href => "#",  :rel => "tooltip",  :title=> "Увас нет скидки","data-placement" => "right"}
+                                    =number_to_currency(price.price, unit: "грн", format: "%n %u")
+
                               %td
-                                = price.delivery 
+                                = price.delivery
                                 дн
                               %td.bt_cart
                                 -if user_signed_in?
@@ -65,15 +73,15 @@
                                   = link_to new_user_session_path, class:"btn btn-mini" do
                                     %i.icon-shopping-cart
 
-                                    
 
-      %tr                     
-        %td{colspan: "7"} 
+
+      %tr
+        %td{colspan: "7"}
           .accordion-group
             .accordion-heading
               %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseTwo"}
                 Аналог
             #collapseTwo.accordion-body.collapse.in
-              .accordion-inner.tab 
-                %table.table.search_table2        
+              .accordion-inner.tab
+                %table.table.search_table2
                   = render "analog_part"

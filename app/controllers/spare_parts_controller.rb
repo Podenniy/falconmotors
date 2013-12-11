@@ -7,11 +7,11 @@ class SparePartsController < InheritedResources::Base
    @spare_part = SparePart.find(params[:id])
     respond_to do |format|
       if @spare_part.update(permitted_params)
-         
+
         format.html { redirect_to action: :index, notice: 'Product was successfully updated.' }
-        
+
         format.json { head :no_content }
-        
+
       else
         format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -31,8 +31,9 @@ class SparePartsController < InheritedResources::Base
       render 'search_table'
      end
     end
+
   end
-  
+
   def who_bought
     @spare_part = SparePart.find(params[:id])
     respond_to do |format|
