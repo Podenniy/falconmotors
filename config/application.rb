@@ -20,7 +20,7 @@ module Falconmotors
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
+    #config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
     config.generators do |g|
       g.stylesheets false
       g.template_engine :haml
