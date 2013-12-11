@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
-
+config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
 module Falconmotors
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,7 +20,7 @@ module Falconmotors
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.middleware.swap(ActionDispatch::Static, Rack::Zippy::AssetServer)
+
     config.generators do |g|
       g.stylesheets false
       g.template_engine :haml
