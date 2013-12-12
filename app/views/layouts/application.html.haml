@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title 
+    %title
       Falconmotors |
       = yield :title
     = csrf_meta_tags
@@ -18,7 +18,7 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-    
+
     :javascript
       $(document).ready(function(){
         $('.carousel').carousel( 'slide' ,{
@@ -32,15 +32,15 @@
         .hd-bg
           .hd-cent
             .hd-left
-              %h2 
-                 
-                %span.in_1 
+              %h2
+
+                %span.in_1
                   Интернет-магазин
-                  %br/ 
+                  %br/
                   %span.in_2
                     автозапчастей
-                    %br/ 
-              
+                    %br/
+
               .social
                 .soc-item{onclick: "window.open('https://facebook.com')"}
                   %img{src: "/assets/fb.png"}/
@@ -48,49 +48,49 @@
                 .soc-item{onclick: "window.open('https://twitter.com')"}
                   %img{src: "/assets/twt.png"}/
                   На Твиттере
-              
-                
+
+
             .logo
               %a{href: "http://falconmotors.az/"}
                 %img{src: "/assets/flogo.png"}/
             .hd-right
-             
+
               .info_flcn
                 .lgin_head
-                  = link_to "Зарегистрироваться",new_registration_path(resource_name)    
+                  = link_to "Зарегистрироваться",new_registration_path(resource_name)
                   |
                   = link_to "Войти",new_user_session_path
-                %ul 
-                  %li.g_tel 
-                    %span.cfr 
+                %ul
+                  %li.g_tel
+                    %span.cfr
                       (0432) 61-23-48
                   %li.m_tel
-                    %span.cfr  
+                    %span.cfr
                       (+380) 9345678
                   %li.email_b
-                    
-                    %span 
+
+                    %span
                       falcon.vinnica@gmail.com
-                
-                
-            .clear  
+
+
+            .clear
       .grad
       .bg_ypon
       .index-cont
         .shad-l
-        
-        =render "layouts/share/search_spare_article" 
-        .shad-r  
+
+        =render "layouts/share/search_spare_article"
+        .shad-r
         %div{style: "clear:both;"}
         .store_index{style: "#{"padding-top: 280px;" if current_page?(store_url)}"}
           .fone
-            .img_fon 
+            .img_fon
           -if current_page?(store_url)
             #slider_box.carousel.slide
               =render "layouts/share/for_slider_box.html.haml"
           .falcon_side
             =render "layouts/share/side_cont.html.haml"
-            
+
           .falcon_box{style: "#{"background: none;" if current_page?(store_url)}"}
             -if notice
               #notise_id
@@ -98,7 +98,7 @@
             = yield
             #cart_wrap
           .clear
-         
+
           %div{style: "clear:both;"}
           .allcar
             Смотреть всем
@@ -106,7 +106,7 @@
         .bot-logo
           %a{href: "http://falconmotors.az/"}
             %img{src: "http://falconmotors.az//css/images/bottom-logo.png"}/
+            google-site-verification: google782a3aa1fcb3c5b5.html
         .footer-cent
-         
-          
-    
+
+
