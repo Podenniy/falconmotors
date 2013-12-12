@@ -6,19 +6,19 @@ Falconmotors::Application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: "users/registrations",
-    passwords: "users/passwords", 
-    
+    passwords: "users/passwords",
+
    }
   devise_scope :user do
     match 'users/' => 'users/registrations#edit_personal_data', via: [:get], as: :edit_personal_data
   end
   resources :users do
-    
+
    #collection do
    #   match 'edit_personal_data' => 'users/registrations#edit_personal_data', via: [:get, :put], as: :edit_personal_data
    # end
   end
-  
+
   resources :price_parts
 
   resources :suppliers
@@ -35,6 +35,7 @@ Falconmotors::Application.routes.draw do
 
   resources :carts
 
+
   get "store/index"
   get "store/cooperation"
   get "store/contact"
@@ -46,7 +47,7 @@ Falconmotors::Application.routes.draw do
       match 'search' => 'spare_parts#search', via: [:get, :post], as: :search
     end
   end
- 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -87,7 +88,7 @@ Falconmotors::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
