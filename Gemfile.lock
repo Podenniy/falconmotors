@@ -86,6 +86,8 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    heroku_rails_deflate (0.2.0)
+      rack (~> 1.5.0)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.1)
@@ -227,6 +229,7 @@ DEPENDENCIES
   devise (= 3.0.2)
   factory_girl (~> 4.2.0)
   haml-rails
+  heroku_rails_deflate
   inherited_resources!
   jbuilder (~> 1.2)
   jquery-rails

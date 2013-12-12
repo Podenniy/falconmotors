@@ -50,6 +50,7 @@ gem "mini_magick", "~> 3.6.0"
 gem "ransack", "~> 1.0.0"
 gem 'seed-fu', github: 'mbleigh/seed-fu'
 #gem 'rack-zippy'
+
 group  :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl', "~> 4.2.0"
@@ -58,6 +59,7 @@ group  :development, :test do
 end
 
 group :production do
+   gem 'heroku_rails_deflate'
   gem 'pg', "~> 0.17.0"
   gem "rails_12factor", "~> 0.0.2"
 end
