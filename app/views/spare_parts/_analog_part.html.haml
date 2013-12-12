@@ -17,14 +17,17 @@
                 %td=price.quantity
 
                 %td
-                  -if current_user.discount_rate?
-                    - desc = price.price.to_i -  price.price.to_i* current_user.discount_rate
-                    %a{:href => "#",  :rel => "tooltip",  :title=> "#{"Ваша цена "+"#{number_to_currency(desc.to_i, unit: "грн", format: "%n %u")}"}","data-placement" => "right"}
+                  -if user_signed_in?
+                    -if current_user.discount_rate?
+                      - desc = price.price.to_i -  price.price.to_i* current_user.discount_rate
+                      %a{:href => "#",  :rel => "tooltip",  :title=> "#{"Ваша цена "+"#{number_to_currency(desc.to_i, unit: "грн", format: "%n %u")}"}","data-placement" => "right"}
 
-                      =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                        =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                    -else
+                      %a{:href => "#",  :rel => "tooltip",  :title=> "Увас нет скидки","data-placement" => "right"}
+                        =number_to_currency(price.price, unit: "грн", format: "%n %u")
                   -else
-                    %a{:href => "#",  :rel => "tooltip",  :title=> "Увас нет скидки","data-placement" => "right"}
-                      =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                    =number_to_currency(price.price, unit: "грн", format: "%n %u")
 
                 %td
                   = price.delivery
@@ -56,16 +59,17 @@
               %td=price.quantity
 
               %td
-                -if current_user.discount_rate?
-                  - desc = price.price.to_i -  price.price.to_i* current_user.discount_rate
-                  %a{:href => "#",  :rel => "tooltip",  :title=> "#{"Ваша цена "+"#{number_to_currency(desc.to_i, unit: "грн", format: "%n %u")}"}","data-placement" => "right"}
+                -if user_signed_in?
+                  -if current_user.discount_rate?
+                    - desc = price.price.to_i -  price.price.to_i* current_user.discount_rate
+                    %a{:href => "#",  :rel => "tooltip",  :title=> "#{"Ваша цена "+"#{number_to_currency(desc.to_i, unit: "грн", format: "%n %u")}"}","data-placement" => "right"}
 
-                    =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                      =number_to_currency(price.price, unit: "грн", format: "%n %u")
+                  -else
+                    %a{:href => "#",  :rel => "tooltip",  :title=> "Увас нет скидки","data-placement" => "right"}
+                      =number_to_currency(price.price, unit: "грн", format: "%n %u")
                 -else
-                  %a{:href => "#",  :rel => "tooltip",  :title=> "Увас нет скидки","data-placement" => "right"}
-                    =number_to_currency(price.price, unit: "грн", format: "%n %u")
-
-
+                  =number_to_currency(price.price, unit: "грн", format: "%n %u")
               %td
                 = price.delivery
                 дн
